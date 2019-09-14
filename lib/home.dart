@@ -1,4 +1,6 @@
 import 'package:carros_flutter_web/constants.dart';
+import 'package:carros_flutter_web/web/header.dart';
+import 'package:carros_flutter_web/web/menu.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -28,22 +30,15 @@ class _HomePageState extends State<HomePage> {
       padding: EdgeInsets.all(16),
       color: Colors.blue,
       width: size.width,
-      height: 80,
-      child: Row(
-        children: <Widget>[
-          Text(
-            "Flutter Web - ${size.width}/${size.height}",
-            style: TextStyle(color: Colors.white),
-          ),
-        ],
-      ),
+      height: headerHeight,
+      child: Header(),
     );
   }
 
   _body() {
     return Container(
       width: size.width,
-      height: size.height - 80,
+      height: size.height - headerHeight,
       child: showMenu
           ? Row(
               children: <Widget>[
@@ -59,22 +54,7 @@ class _HomePageState extends State<HomePage> {
     return Container(
       width: menuWidth,
       color: Colors.blue[100],
-      child: ListView(
-        children: <Widget>[
-          ListTile(
-            leading: Icon(Icons.star),
-            title: Text("Item 1"),
-          ),
-          ListTile(
-            leading: Icon(Icons.star),
-            title: Text("Item 2"),
-          ),
-          ListTile(
-            leading: Icon(Icons.star),
-            title: Text("Item 3"),
-          )
-        ],
-      ),
+      child: Menu(),
     );
   }
 
