@@ -12,28 +12,30 @@ class _HomePageState extends State<HomePage> {
 
   bool get showDrawer => size.width <= 760;
 
+  //Text("Flutter Web - ${size.width}/${size.height}")
+
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Flutter Web - ${size.width}/${size.height}"),
-        automaticallyImplyLeading: showDrawer,
+      body: Column(
+        children: <Widget>[
+          Container(
+            color: Colors.blue,
+            width: size.width,
+            height: 80,
+          ),
+          Container(
+            width: size.width,
+            height: size.height - 80,
+            child: Row(
+              children: <Widget>[
+                showDrawer ? Container() : _menu(),
+                _right()
+              ],
+            ),
+          ),
+        ],
       ),
-      body: _body(),
-      drawer: Drawer(
-        child: _menu(),
-      ),
-    );
-  }
-
-  _body() {
-
-    return Row(
-      children: <Widget>[
-        showDrawer ? Container() : _menu(),
-        _right()
-      ],
     );
   }
 
