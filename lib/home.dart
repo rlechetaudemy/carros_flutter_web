@@ -21,19 +21,18 @@ class _HomePageState extends State<HomePage> {
   }
 
   _body() {
+
+    Size size = MediaQuery.of(context).size;
+
     return Row(
       children: <Widget>[
-        Expanded(
-          flex: 2,
-          child: Container(
-            color: Colors.blue[100],
-          ),
+        Container(
+          width: 230,
+          color: Colors.blue[100],
         ),
-        Expanded(
-          flex: 8,
-          child: Container(
-            color: Colors.grey[100],
-          ),
+        Container(
+          width: size.width - 230,
+          color: Colors.grey,
         )
       ],
     );
