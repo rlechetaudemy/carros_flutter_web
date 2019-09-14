@@ -14,11 +14,28 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Flutter Web"),
+        title: Text("Flutter Web - ${size.width}/${size.height}"),
       ),
-      body: Center(
-        child: Text("Hello ${size.width}/${size.height}"),
-      ),
+      body: _body(),
+    );
+  }
+
+  _body() {
+    return Row(
+      children: <Widget>[
+        Expanded(
+          flex: 2,
+          child: Container(
+            color: Colors.blue[100],
+          ),
+        ),
+        Expanded(
+          flex: 8,
+          child: Container(
+            color: Colors.grey[100],
+          ),
+        )
+      ],
     );
   }
 }
