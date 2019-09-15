@@ -9,31 +9,50 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   Size get size => MediaQuery.of(context).size;
 
-  bool get showDrawer => size.width <= 760;
+  bool get showMenu => size.width > 500;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Flutter Web - ${size.width}/${size.height}"),
-        automaticallyImplyLeading: showDrawer,
+      body: Column(
+        children: <Widget>[
+          _header(),
+          _body(),
+        ],
       ),
-      body: _body(),
-      drawer: Drawer(
-        child: _menu(),
+    );
+  }
+
+  _header() {
+    return Container(
+      padding: EdgeInsets.all(16),
+      width: size.width,
+      height: headerHeight,
+      color: Colors.blue,
+      child: Row(
+        children: <Widget>[
+          Text(
+            "Flutter Web - ${size.width}/${size.height}",
+            style: TextStyle(color: Colors.white),
+          ),
+        ],
       ),
     );
   }
 
   _body() {
-    return showDrawer
-        ? _right()
-        : Row(
-            children: <Widget>[
-              _menu(),
-              _right(),
-            ],
-          );
+    return Container(
+      width: size.width,
+      height: size.height - headerHeight,
+      child: showMenu
+          ? Row(
+              children: <Widget>[
+                _menu(),
+                _right(),
+              ],
+            )
+          : _right(),
+    );
   }
 
   _menu() {
@@ -61,7 +80,7 @@ class _HomePageState extends State<HomePage> {
 
   _right() {
     return Container(
-      width: showDrawer ? size.width : size.width - menuWidth,
+      width: showMenu ? size.width - menuWidth : size.width,
       color: Colors.grey,
     );
   }
