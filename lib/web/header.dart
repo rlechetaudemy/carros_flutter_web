@@ -1,4 +1,3 @@
-import 'package:carros_flutter_web/constants.dart';
 import 'package:carros_flutter_web/domain/user.dart';
 import 'package:carros_flutter_web/utils/alert.dart';
 import 'package:flutter/material.dart';
@@ -15,19 +14,15 @@ class _HeaderState extends State<Header> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: size.width,
-      height: headerHeight,
-      child: ListTile(
-        leading: FlutterLogo(
-          size: 50,
-        ),
-        title: Text(
-          "Carros ${size.width}/${size.height}",
-          style: TextStyle(fontSize: 20,color: Colors.white),
-        ),
-        trailing: _right(),
+    return ListTile(
+      leading: FlutterLogo(
+        size: 50,
       ),
+      title: Text(
+        "Carros ${size.width}/${size.height}",
+        style: TextStyle(fontSize: 20,color: Colors.white),
+      ),
+      trailing: _right(),
     );
   }
 
@@ -89,10 +84,15 @@ class _HeaderState extends State<Header> {
   void _onClickOptionMenu(context, String value) {
     print("_onClickOptionMenu $value");
     if ("logout" == value) {
+
     } else if ("meus_dados" == value) {
+
     } else if ("alterar_senha" == value) {
+
     } else {
-      alert(context, value);
+
     }
+
+    alert(context, value);
   }
 }
