@@ -1,0 +1,2 @@
+
+double menuWidth = 230;
