@@ -11,7 +11,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   Size get size => MediaQuery.of(context).size;
 
-  bool get showMenu => size.width > 760;
+  bool get showMenu => size.width > 500;
 
   @override
   Widget build(BuildContext context) {
@@ -59,13 +59,26 @@ class _HomePageState extends State<HomePage> {
   }
 
   _right() {
+
+    double width = showMenu ? size.width - menuWidth : size.width;
+
+    int columns = 1;
+
+    if(width <= 500) {
+      columns = 1;
+    } else if(width < 1000) {
+      columns = 2;
+    } else {
+      columns = 3;
+    }
+
     return Container(
       padding: EdgeInsets.all(16),
-      width: showMenu ? size.width - menuWidth : size.width,
+      width: width,
       color: Colors.grey,
       child: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: showMenu ? 3 : 1,
+          crossAxisCount: columns,
           mainAxisSpacing: 20,
           crossAxisSpacing: 20,
           childAspectRatio: 2,
@@ -76,7 +89,7 @@ class _HomePageState extends State<HomePage> {
             height: 150,
             child: Card(
               child: Center(
-                child: Text("Item $idx"),
+                child: Text("$width"),
               ),
             ),
           );
