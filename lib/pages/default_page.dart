@@ -16,7 +16,7 @@ class _DefaultPageState extends State<DefaultPage> {
 
   _body() {
     return Center(
-      child: Text("Home"),
+      child: Text("Home - default page"),
     );
   }
 }
