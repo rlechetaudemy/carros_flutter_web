@@ -60,8 +60,37 @@ class _HomePageState extends State<HomePage> {
 
   _right() {
     return Container(
-      width: showMenu ? size.width - menuWidth :  size.width,
+      padding: EdgeInsets.all(16),
+      width: showMenu ? size.width - menuWidth : size.width,
       color: Colors.grey,
+      child: showMenu
+          ? GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,mainAxisSpacing: 20,crossAxisSpacing: 20,childAspectRatio: 2),
+              itemCount: 100,
+              itemBuilder: (context, idx) {
+                return Container(
+                  height: 150,
+                  child: Card(
+                    child: Center(
+                      child: Text("Item $idx"),
+                    ),
+                  ),
+                );
+              },
+            )
+          : ListView.builder(
+              itemCount: 100,
+              itemBuilder: (context, idx) {
+                return Container(
+                  height: 150,
+                  child: Card(
+                    child: Center(
+                      child: Text("Item $idx"),
+                    ),
+                  ),
+                );
+              },
+            ),
     );
   }
 }
