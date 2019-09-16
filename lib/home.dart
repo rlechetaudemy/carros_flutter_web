@@ -1,5 +1,6 @@
 import 'package:carros_flutter_web/app_model.dart';
 import 'package:carros_flutter_web/constants.dart';
+import 'package:carros_flutter_web/web/body.dart';
 import 'package:carros_flutter_web/web/header.dart';
 import 'package:carros_flutter_web/web/menu.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: Column(
         children: <Widget>[
@@ -62,11 +64,9 @@ class _HomePageState extends State<HomePage> {
 
   _right() {
 
-    AppModel app = Provider.of<AppModel>(context);
-
     return Container(
       width: showMenu ? size.width - menuWidth : size.width,
-      child: app.page,
+      child: Body(),
     );
   }
 }
