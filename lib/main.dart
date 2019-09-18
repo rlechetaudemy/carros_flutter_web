@@ -26,8 +26,8 @@ class MyApp extends StatelessWidget {
     return ThemeData(
       primarySwatch: Colors.blue,
       scaffoldBackgroundColor: Colors.white,
-      splashColor: Colors.green,
-      hoverColor: Colors.green[100],
+      splashColor: Colors.blue,
+      hoverColor: Colors.blue[100],
       textTheme: TextTheme(
         body1: TextStyle(
           fontSize: 22,
