@@ -14,7 +14,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   Size get size => MediaQuery.of(context).size;
 
-  bool get showMenu => true;//size.width > 500;
+  bool get showMenu => size.width > 500;
 
   @override
   Widget build(BuildContext context) {

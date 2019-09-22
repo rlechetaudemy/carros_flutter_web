@@ -35,8 +35,16 @@ class _DefaultPageState extends State<DefaultPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Image.network(
-                      "http://www.livroandroid.com.br/livro/carros/esportivos/Renault_Megane_Trophy.png"),
+                  ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxWidth: 250
+                    ),
+                    child: Container(
+                      color: Colors.blue[50],
+                      child: Image.network(
+                          "http://www.livroandroid.com.br/livro/carros/esportivos/Renault_Megane_Trophy.png"),
+                    ),
+                  ),
                   Text(
                     "$fontSize - Renault Megane RS Trophy",
                     overflow: TextOverflow.ellipsis,
