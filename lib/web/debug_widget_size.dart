@@ -7,7 +7,7 @@ class DebugWidgetSize extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         return Center(
-          child: Text(">> ${constraints.maxWidth}/${constraints.maxHeight} <<"),
+          child: Text(">> ${constraints.maxWidth.toInt()}/${constraints.maxHeight.toInt()} <<"),
         );
       },
     );
