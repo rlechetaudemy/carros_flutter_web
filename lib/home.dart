@@ -65,6 +65,8 @@ class _HomePageState extends State<HomePage> {
   _right() {
 
     return Container(
+      color: Colors.yellow,
+      padding: EdgeInsets.all(16),
       width: showMenu ? size.width - menuWidth : size.width,
       child: Body(),
     );
