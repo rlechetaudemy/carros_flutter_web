@@ -1,6 +1,8 @@
 
+import 'package:carros_flutter_web/app_model.dart';
 import 'package:carros_flutter_web/web/debug_widget_size.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CarroPage extends StatelessWidget {
   String nome;
@@ -9,11 +11,19 @@ class CarroPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(nome),
+    return Center(
+      child: Column(
+        children: <Widget>[
+          Text(nome),
+          RaisedButton(
+            child: Text("Voltar"),
+            onPressed: () {
+              AppModel app = Provider.of<AppModel>(context, listen: false);
+              app.pop();
+            },
+          )
+        ],
       ),
-      body: DebugWidgetSize(),
     );
   }
 }

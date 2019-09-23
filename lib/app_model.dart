@@ -18,4 +18,10 @@ class AppModel extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  void pop() {
+    _pages.removeLast();
+
+    notifyListeners();
+  }
 }
