@@ -11,19 +11,18 @@ class CarroPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        children: <Widget>[
-          Text(nome),
-          RaisedButton(
-            child: Text("Voltar"),
-            onPressed: () {
-              AppModel app = Provider.of<AppModel>(context, listen: false);
-              app.pop();
-            },
-          )
-        ],
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Text(nome),
+        RaisedButton(
+          child: Text("Voltar"),
+          onPressed: () {
+            AppModel app = Provider.of<AppModel>(context, listen: false);
+            app.pop();
+          },
+        )
+      ],
     );
   }
 }

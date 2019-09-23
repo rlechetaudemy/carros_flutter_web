@@ -13,6 +13,8 @@ class AppModel extends ChangeNotifier {
 
   Widget get lastPage => _pages.last;
 
+  List<Widget> get pages => _pages;
+
   push(Widget page) {
     this._pages.add(page);
 
