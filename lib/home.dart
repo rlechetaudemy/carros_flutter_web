@@ -1,7 +1,6 @@
 import 'package:carros_flutter_web/app_model.dart';
 import 'package:carros_flutter_web/constants.dart';
 import 'package:carros_flutter_web/web/body.dart';
-import 'package:carros_flutter_web/web/breadcrub.dart';
 import 'package:carros_flutter_web/web/header.dart';
 import 'package:carros_flutter_web/web/menu.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +14,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   Size get size => MediaQuery.of(context).size;
 
-  bool get showMenu => true;//size.width > 500;
+  bool get showMenu => size.width > 500;
 
   @override
   Widget build(BuildContext context) {
@@ -66,22 +65,10 @@ class _HomePageState extends State<HomePage> {
   _right() {
 
     return Container(
+      color: Colors.yellow,
       padding: EdgeInsets.all(16),
       width: showMenu ? size.width - menuWidth : size.width,
-      child: Column(
-        children: <Widget>[
-          Container(
-            color: Colors.grey[100],
-            width: size.width,
-            height: 60,
-            child: BreadCrumb(),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Expanded(child: Body())
-        ],
-      ),
+      child: Body(),
     );
   }
 }
