@@ -1,5 +1,3 @@
-import 'dart:convert' as convert;
-
 class Carro {
   int id;
   String nome;
@@ -29,25 +27,6 @@ class Carro {
     urlVideo = map['urlVideo'];
     latitude = map['latitude'];
     longitude = map['longitude'];
-  }
-
-  @override
-  Map<String, dynamic> toMap() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['id'] = this.id;
-    data['nome'] = this.nome;
-    data['tipo'] = this.tipo;
-    data['descricao'] = this.descricao;
-    data['urlFoto'] = this.urlFoto;
-    data['urlVideo'] = this.urlVideo;
-    data['latitude'] = this.latitude;
-    data['longitude'] = this.longitude;
-    return data;
-  }
-
-  String toJson() {
-    String json = convert.json.encode(toMap());
-    return json;
   }
 
   @override
