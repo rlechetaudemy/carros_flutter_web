@@ -68,7 +68,19 @@ class _HomePageState extends State<HomePage> {
       color: Colors.yellow,
       padding: EdgeInsets.all(16),
       width: showMenu ? size.width - menuWidth : size.width,
-      child: Body(),
+      child: Column(
+        children: <Widget>[
+          Container(
+            color: Colors.grey,
+            width: size.width,
+            height: 60,
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Expanded(child: Body())
+        ],
+      ),
     );
   }
 }
