@@ -1,8 +1,12 @@
 
+import 'package:carros_flutter_web/app_model.dart';
 import 'package:carros_flutter_web/pages/carros/carro.dart';
+import 'package:carros_flutter_web/pages/carros/carro_page.dart';
 import 'package:carros_flutter_web/pages/carros/carros_api.dart';
+import 'package:carros_flutter_web/utils/nav.dart';
 import 'package:carros_flutter_web/web/web_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CarrosPage extends StatefulWidget {
   @override
@@ -30,7 +34,7 @@ class _CarrosPageState extends State<CarrosPage> {
 
   _listView(List<Carro> carros) {
     return GridView.builder(
-      itemCount: carros.length,
+      itemCount: 100,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: 20,
@@ -45,20 +49,23 @@ class _CarrosPageState extends State<CarrosPage> {
               max: Theme.of(context).textTheme.body1.fontSize,
             );
 
-            Carro c = carros[index];
+            Carro carro = carros[index];
 
-            return Card(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Image.network(
-                      c.urlFoto ?? "http://www.livroandroid.com.br/livro/carros/esportivos/Renault_Megane_Trophy.png"),
-                  Text(
-                    c.nome ?? "",
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: fontSize),
-                  )
-                ],
+            return InkWell(
+              onTap: () => _onClickCarro(carro),
+              child: Card(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Image.network(
+                        carro.urlFoto ?? "http://www.livroandroid.com.br/livro/carros/esportivos/Renault_Megane_Trophy.png"),
+                    Text(
+                      carro.nome ?? "",
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(fontSize: fontSize),
+                    )
+                  ],
+                ),
               ),
             );
           },
@@ -66,5 +73,12 @@ class _CarrosPageState extends State<CarrosPage> {
         ;
       },
     );
+  }
+
+  _onClickCarro(Carro carro) {
+    //push(context, CarroPage(carro));
+
+    AppModel app = Provider.of<AppModel>(context, listen: false);
+    app.push(PageInfo(carro.nome, CarroPage(carro)));
   }
 }
