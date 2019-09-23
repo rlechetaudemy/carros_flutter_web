@@ -1,8 +1,10 @@
 
+import 'package:carros_flutter_web/app_model.dart';
 import 'package:carros_flutter_web/pages/carro_page.dart';
 import 'package:carros_flutter_web/utils/nav.dart';
 import 'package:carros_flutter_web/web/web_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CarrosPage extends StatefulWidget {
   @override
@@ -67,6 +69,9 @@ class _CarrosPageState extends State<CarrosPage> {
   }
 
   _onClickCarro(int index) {
-    push(context, CarroPage("Carro $index"));
+//    push(context, CarroPage("Carro $index"));
+
+    AppModel app = Provider.of<AppModel>(context, listen: false);
+    app.push(CarroPage("Carro $index"));
   }
 }

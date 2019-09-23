@@ -5,14 +5,16 @@ import 'package:flutter/material.dart';
 
 class AppModel extends ChangeNotifier {
 
-  Widget page;
+  List<Widget> _pages = [];
 
   AppModel() {
-    page = CarrosPage();
+    _pages.add(CarrosPage());
   }
 
-  setPage(Widget page) {
-    this.page = page;
+  Widget get lastPage => _pages.last;
+
+  push(Widget page) {
+    this._pages.add(page);
 
     notifyListeners();
   }
