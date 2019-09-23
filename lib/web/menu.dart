@@ -52,7 +52,7 @@ class _MenuState extends State<Menu> {
       child: InkWell(
         onTap: () {
           AppModel app = Provider.of<AppModel>(context, listen: false);
-          app.push(item.page, replace: true);
+          app.push(PageInfo(item.title, item.page), replace: true);
 
           setState(() {
             menus.forEach((item) => item.selected = false);

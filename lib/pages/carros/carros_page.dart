@@ -79,6 +79,6 @@ class _CarrosPageState extends State<CarrosPage> {
     //push(context, CarroPage(carro));
 
     AppModel app = Provider.of<AppModel>(context, listen: false);
-    app.push(CarroPage(carro));
+    app.push(PageInfo(carro.nome, CarroPage(carro)));
   }
 }
