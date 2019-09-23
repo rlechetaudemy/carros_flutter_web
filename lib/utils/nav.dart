@@ -8,7 +8,7 @@ Future push(BuildContext context, Widget page, {bool replace = false}) {
     }));
   }
 
-  return Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+  return Navigator.push(context, FadeRoute(builder: (BuildContext context) {
     return page;
   }));
 }
