@@ -7,16 +7,26 @@ class AppModel extends ChangeNotifier {
 
   List<Widget> _pages = [];
 
+  Widget defaultPage = DefaultPage();
+
   AppModel() {
-    _pages.add(CarrosPage());
+    _pages.add(defaultPage);
   }
 
   Widget get lastPage => _pages.last;
 
   List<Widget> get pages => _pages;
 
-  push(Widget page) {
-    this._pages.add(page);
+  push(Widget page, {bool replace = false}) {
+    if(replace) {
+      this._pages.clear();
+
+      this._pages.add(defaultPage);
+    }
+
+    if(page.runtimeType != defaultPage.runtimeType) {
+      _pages.add(page);
+    }
 
     notifyListeners();
   }
