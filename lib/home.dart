@@ -1,9 +1,10 @@
+import 'package:carros_flutter_web/app_model.dart';
 import 'package:carros_flutter_web/constants.dart';
 import 'package:carros_flutter_web/web/body.dart';
-import 'package:carros_flutter_web/web/breadcrumb.dart';
 import 'package:carros_flutter_web/web/header.dart';
 import 'package:carros_flutter_web/web/menu.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -17,6 +18,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: Column(
         children: <Widget>[
@@ -61,22 +63,12 @@ class _HomePageState extends State<HomePage> {
   }
 
   _right() {
+
     return Container(
+      color: Colors.yellow,
       padding: EdgeInsets.all(16),
       width: showMenu ? size.width - menuWidth : size.width,
-      child: Column(
-        children: <Widget>[
-          Container(
-            color: Colors.grey[100],
-            width: size.width,
-            height: 60,
-            child: BreadCrumb(),
-          ),
-          Expanded(
-            child: Body(),
-          ),
-        ],
-      ),
+      child: Body(),
     );
   }
 }
