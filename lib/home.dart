@@ -71,7 +71,7 @@ class _HomePageState extends State<HomePage> {
       child: Column(
         children: <Widget>[
           Container(
-            color: Colors.grey,
+            color: Colors.grey[100],
             width: size.width,
             height: 60,
             child: BreadCrumb(),
