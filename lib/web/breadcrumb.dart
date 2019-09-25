@@ -22,17 +22,30 @@ class _BreadCrumbState extends State<BreadCrumb> {
 
         PageInfo info = app.pages[index];
 
-        return Row(
-          children: <Widget>[
-            ConstrainedBox(
-              constraints: BoxConstraints.expand(width: 32),
-              child: Icon(index == 0 ? FontAwesomeIcons.home : FontAwesomeIcons.chevronRight,
-              color: AppColors.blue,),
-            ) ,
-            Text(info.title, style: TextStyle(fontSize: 20),)
-          ],
+        return InkWell(
+          onTap: () => _onClickPage(index),
+          child: Row(
+            children: <Widget>[
+              ConstrainedBox(
+                constraints: BoxConstraints.expand(width: 32),
+                child: Icon(index == 0 ? FontAwesomeIcons.home : FontAwesomeIcons.chevronRight,
+                color: AppColors.blue,),
+              ) ,
+              Text(info.title, style: TextStyle(fontSize: 20),)
+            ],
+          ),
         );
 
     },);
+  }
+
+  _onClickPage(int index) {
+    AppModel app = Provider.of<AppModel>(context);
+
+    if(index == 0) {
+      app.popAll();
+    } else {
+      app.popTo(index);
+    }
   }
 }
