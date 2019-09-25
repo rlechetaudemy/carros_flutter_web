@@ -1,5 +1,6 @@
 
 import 'package:carros_flutter_web/app_model.dart';
+import 'package:carros_flutter_web/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -25,7 +26,8 @@ class _BreadCrumbState extends State<BreadCrumb> {
           children: <Widget>[
             ConstrainedBox(
               constraints: BoxConstraints.expand(width: 32),
-              child: Icon(index == 0 ? FontAwesomeIcons.home : FontAwesomeIcons.chevronRight),
+              child: Icon(index == 0 ? FontAwesomeIcons.home : FontAwesomeIcons.chevronRight,
+              color: AppColors.blue,),
             ) ,
             Text(info.title, style: TextStyle(fontSize: 20),)
           ],

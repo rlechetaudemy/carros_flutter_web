@@ -1,5 +1,6 @@
 
 import 'package:carros_flutter_web/app_model.dart';
+import 'package:carros_flutter_web/colors.dart';
 import 'package:carros_flutter_web/pages/carros/carros_page.dart';
 import 'package:carros_flutter_web/pages/default_page.dart';
 import 'package:carros_flutter_web/pages/usuarios_page.dart';
@@ -61,7 +62,7 @@ class _MenuState extends State<Menu> {
           });
         },
         child: ListTile(
-          leading: Icon(item.icon),
+          leading: Icon(item.icon,color: AppColors.blue,),
           title: Text(item.title, style: TextStyle(fontWeight: item.selected ? FontWeight.bold : FontWeight.normal),),
         ),
       ),
