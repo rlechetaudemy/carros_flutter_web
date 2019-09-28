@@ -1,5 +1,4 @@
 import 'package:carros_flutter_web/web/debug_widget_size.dart';
-import 'package:carros_flutter_web/utils/web/web_utils.dart';
 import 'package:flutter/material.dart';
 
 class DefaultPage extends StatefulWidget {

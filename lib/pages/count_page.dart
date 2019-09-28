@@ -1,20 +1,20 @@
 import 'package:carros_flutter_web/utils/web/prefs.dart';
 import 'package:flutter/material.dart';
 
-class PrefsPage extends StatefulWidget {
+class CountPage extends StatefulWidget {
 
   @override
-  _PrefsPageState createState() => _PrefsPageState();
+  _CountPageState createState() => _CountPageState();
 }
 
-class _PrefsPageState extends State<PrefsPage> {
+class _CountPageState extends State<CountPage> {
   int _counter = 0;
 
   @override
   void initState() {
     super.initState();
 
-//    _counter = Prefs.getInt("count");
+    _counter = Prefs.getInt("count");
   }
 
   void _incrementCounter() {
