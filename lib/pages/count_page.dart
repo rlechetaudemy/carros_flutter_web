@@ -1,3 +1,4 @@
+import 'package:carros_flutter_web/utils/web/prefs.dart';
 import 'package:flutter/material.dart';
 
 class CountPage extends StatefulWidget {
@@ -12,11 +13,15 @@ class _CountPageState extends State<CountPage> {
   @override
   void initState() {
     super.initState();
+
+    _counter = Prefs.getInt("count");
   }
 
   void _incrementCounter() {
     setState(() {
       _counter++;
+
+      Prefs.setInt("count", _counter);
     });
   }
 
@@ -44,5 +49,4 @@ class _CountPageState extends State<CountPage> {
       ),
     );
   }
-
 }
