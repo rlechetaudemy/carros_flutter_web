@@ -3,7 +3,7 @@ import 'dart:html';
 import 'package:carros_flutter_web/pages/upload/upload_api.dart';
 import 'package:carros_flutter_web/pages/upload/upload_helper.dart';
 import 'package:carros_flutter_web/utils/api_response.dart';
-import 'package:carros_flutter_web/web/launch.dart';
+import 'package:carros_flutter_web/utils/web/launch.dart';
 import 'package:flutter/material.dart';
 
 class UploadPage extends StatefulWidget {

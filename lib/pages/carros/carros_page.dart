@@ -4,7 +4,7 @@ import 'package:carros_flutter_web/pages/carros/carro.dart';
 import 'package:carros_flutter_web/pages/carros/carro_page.dart';
 import 'package:carros_flutter_web/pages/carros/carros_api.dart';
 import 'package:carros_flutter_web/utils/nav.dart';
-import 'package:carros_flutter_web/web/web_utils.dart';
+import 'package:carros_flutter_web/utils/web/web_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
