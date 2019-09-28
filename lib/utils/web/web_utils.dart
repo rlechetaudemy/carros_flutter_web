@@ -1,5 +1,5 @@
 
-size(double size, {double min = 10, double max = 22}) {
+size(double size, {double min = 0, double max = double.infinity}) {
   if(size < min) {
     return min;
   }
