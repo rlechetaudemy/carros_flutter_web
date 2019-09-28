@@ -45,7 +45,11 @@ class _UploadPageState extends State<UploadPage> {
               constraints: BoxConstraints.tightFor(height: 250),
               child: Center(
                 child: url == null || showProgress
-                    ? showProgress ? CircularProgressIndicator() : FlutterLogo(size: 100,)
+                    ? showProgress
+                        ? CircularProgressIndicator()
+                        : FlutterLogo(
+                            size: 100,
+                          )
                     : InkWell(
                         onTap: () {
                           launch(url);
@@ -79,8 +83,7 @@ class _UploadPageState extends State<UploadPage> {
   }
 
   void uploadCallback(UploadState state) {
-
-    if(state.started) {
+    if (state.started) {
       print("Upload iniciado...");
       setState(() {
         showProgress = true;
