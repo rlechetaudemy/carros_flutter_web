@@ -1,5 +1,5 @@
 import 'package:key_value_store_web/key_value_store_web.dart';
-import 'package:universal_html/prefer_sdk/html.dart' as html;
+import 'dart:html' as html;
 
 class Prefs {
   static WebKeyValueStore get prefs =>

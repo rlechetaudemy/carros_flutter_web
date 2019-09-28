@@ -1,8 +1,5 @@
+import 'dart:async';
 import 'dart:html';
-
-import 'package:flutter/material.dart';
-
-typedef UploadCallback = void Function(UploadState state);
 
 class UploadState {
   bool started;
@@ -30,7 +27,11 @@ class FileUpload {
 }
 
 class UploadHelper {
-  static upload ({@required UploadCallback uploadCallback}) async {
+
+  final _controller = StreamController<UploadState>();
+  Stream<UploadState> get stream => _controller.stream;
+
+  upload () {
 
     InputElement uploadInput = FileUploadInputElement();
     uploadInput.click();
@@ -43,7 +44,7 @@ class UploadHelper {
         print("Upload file: ${file.name}");
 
         // callback
-        uploadCallback(UploadState(started: true));
+        _controller.add(UploadState(started: true));
 
         // Faz a leitura do arquivo
         final reader = new FileReader();
@@ -62,12 +63,16 @@ class UploadHelper {
           final fileUpload = FileUpload(file.name, mimeType, base64);
 
           // callback
-          uploadCallback(UploadState(fileUpload: fileUpload));
+          _controller.add(UploadState(fileUpload: fileUpload));
         });
 
         // Lê o arquivo - assíncrono
         reader.readAsDataUrl(file);
       }
     });
+  }
+
+  dispose() {
+    _controller.close();
   }
 }

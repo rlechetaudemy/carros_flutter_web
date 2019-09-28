@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:html';
 
 import 'package:carros_flutter_web/pages/upload/upload_api.dart';
@@ -14,6 +15,19 @@ class UploadPage extends StatefulWidget {
 class _UploadPageState extends State<UploadPage> {
   String url;
   bool showProgress = false;
+
+  final uploadHelper = UploadHelper();
+
+  StreamSubscription<UploadState> subscription;
+
+  @override
+  void initState() {
+    super.initState();
+
+    subscription = uploadHelper.stream.listen((UploadState state){
+      _setUploadState(state);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,10 +84,10 @@ class _UploadPageState extends State<UploadPage> {
   }
 
   _onClickUpload() {
-    UploadHelper.upload(uploadCallback: uploadCallback);
+    uploadHelper.upload();
   }
 
-  void uploadCallback(UploadState state) {
+  void _setUploadState(UploadState state) {
     if (state.started) {
       print("Upload iniciado...");
       setState(() {
@@ -101,5 +115,13 @@ class _UploadPageState extends State<UploadPage> {
         this.showProgress = false;
       });
     }
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+
+    subscription.cancel();
+    uploadHelper.dispose();
   }
 }
