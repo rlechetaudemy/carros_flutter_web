@@ -1,6 +1,7 @@
 
 import 'package:carros_flutter_web/pages/carros/carros_page.dart';
 import 'package:carros_flutter_web/pages/default_page.dart';
+import 'package:carros_flutter_web/pages/info_page.dart';
 import 'package:flutter/material.dart';
 
 class PageInfo {
@@ -19,7 +20,7 @@ class AppModel extends ChangeNotifier {
 
   List<PageInfo> pages = [];
 
-  PageInfo defaultPage = PageInfo("Home", DefaultPage());
+  PageInfo defaultPage = PageInfo("Info", InfoPage());
 
   AppModel() {
     pages.add(defaultPage);
