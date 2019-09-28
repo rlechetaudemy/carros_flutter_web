@@ -1,6 +1,5 @@
 import 'dart:html';
 
-import 'package:carros_flutter_web/colors.dart';
 import 'package:carros_flutter_web/pages/upload/upload_api.dart';
 import 'package:carros_flutter_web/pages/upload/upload_helper.dart';
 import 'package:carros_flutter_web/utils/api_response.dart';
@@ -57,16 +56,8 @@ class _UploadPageState extends State<UploadPage> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Image.network(
-                              url,
-                            ),
-                            Text(
-                              url,
-                              style: TextStyle(
-                                color: AppColors.blue,
-                                decorationStyle: TextDecorationStyle.dashed,
-                              ),
-                            ),
+                            Image.network(url),
+                            Text(url),
                           ],
                         ),
                       ),
