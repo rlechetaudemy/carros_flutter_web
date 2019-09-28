@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
 
   _theme() {
     return ThemeData(
-//      fontFamily: "NunitoSans",
+      fontFamily: "Mansalva",
       primaryColor: AppColors.blue,
       scaffoldBackgroundColor: Colors.white,
       splashColor: Colors.blue,

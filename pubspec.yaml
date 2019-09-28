@@ -61,9 +61,14 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: NunitoSans
+    - family: Mansalva
       fonts:
-        - asset: assets/fonts/NunitoSans-Regular.ttf
+        -  asset: assets/fonts/Mansalva-Regular.ttf
+
+    - family: Raleway
+      fonts:
+        - asset: assets/fonts/Raleway-Regular.ttf
+
   # fonts:
   #   - family: Schyler
   #     fonts:
