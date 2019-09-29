@@ -6,7 +6,7 @@ import 'package:carros_flutter_web/pages/count_page.dart';
 import 'package:carros_flutter_web/pages/default_page.dart';
 import 'package:carros_flutter_web/pages/info_page.dart';
 import 'package:carros_flutter_web/pages/upload/upload_page.dart';
-import 'package:carros_flutter_web/pages/usuarios_page.dart';
+import 'package:carros_flutter_web/pages/usuarios/usuarios_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
