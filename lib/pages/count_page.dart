@@ -2,7 +2,6 @@ import 'package:carros_flutter_web/utils/web/prefs.dart';
 import 'package:flutter/material.dart';
 
 class CountPage extends StatefulWidget {
-
   @override
   _CountPageState createState() => _CountPageState();
 }

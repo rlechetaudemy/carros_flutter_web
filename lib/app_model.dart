@@ -1,6 +1,23 @@
-
 import 'package:carros_flutter_web/pages/default_page.dart';
+import 'package:carros_flutter_web/pages/login/usuario.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+class AppModel {
+  //static Usuario getUsuario(context) => Provider.of<AppModel>(context,listen: false).user;
+
+  static AppModel get(context, {bool listen = false}) =>
+      Provider.of<AppModel>(context, listen: false);
+
+  Usuario _user;
+
+  Usuario get user => _user;
+
+  void setUser(Usuario user) {
+    this._user = user;
+    user = user;
+  }
+}
 
 class PageInfo {
   String title;
@@ -14,22 +31,24 @@ class PageInfo {
   }
 }
 
-class AppModel extends ChangeNotifier {
+class PagesModel extends ChangeNotifier {
+  static PagesModel get(context, {bool listen = false}) =>
+      Provider.of<PagesModel>(context, listen: listen);
 
   List<PageInfo> pages = [];
 
   PageInfo defaultPage = PageInfo("Home", DefaultPage());
 
-  AppModel() {
+  PagesModel() {
     pages.add(defaultPage);
   }
 
   push(PageInfo page, {bool replace = false}) {
-    if(replace) {
+    if (replace) {
       popAll();
     }
 
-    if(page.title != "Home") {
+    if (page.title != "Home") {
       this.pages.add(page);
     }
 
@@ -50,7 +69,7 @@ class AppModel extends ChangeNotifier {
   }
 
   void popTo(int index) {
-    pages.removeRange(index+1, pages.length);
+    pages.removeRange(index + 1, pages.length);
 
     notifyListeners();
   }

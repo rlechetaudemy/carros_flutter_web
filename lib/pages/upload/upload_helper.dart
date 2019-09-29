@@ -27,12 +27,11 @@ class FileUpload {
 }
 
 class UploadHelper {
-
   final _controller = StreamController<UploadState>();
+
   Stream<UploadState> get stream => _controller.stream;
 
-  upload () {
-
+  upload() {
     InputElement uploadInput = FileUploadInputElement();
     uploadInput.click();
 
@@ -55,9 +54,9 @@ class UploadHelper {
           String s = result;
           print("> $s");
 
-          String base64 = s.substring(s.indexOf(",")+1);
+          String base64 = s.substring(s.indexOf(",") + 1);
 
-          String mimeType = s.substring(s.indexOf(":")+1,s.indexOf(";"));
+          String mimeType = s.substring(s.indexOf(":") + 1, s.indexOf(";"));
           print("mimeType: ${mimeType}");
 
           final fileUpload = FileUpload(file.name, mimeType, base64);

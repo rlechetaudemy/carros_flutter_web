@@ -1,7 +1,7 @@
 import 'dart:html' as html;
 
 launch(String url) {
-  html.window.open(url,"site");
+  html.window.open(url, "site");
 }
 
 back() {

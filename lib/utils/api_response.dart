@@ -1,4 +1,3 @@
-
 class ApiResponse<T> {
   bool ok;
   String msg;

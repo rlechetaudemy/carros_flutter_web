@@ -1,4 +1,4 @@
-import 'package:carros_flutter_web/domain/user.dart';
+import 'package:carros_flutter_web/main.dart';
 import 'package:carros_flutter_web/utils/alert.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +20,7 @@ class _HeaderState extends State<Header> {
       ),
       title: Text(
         "Carros ${size.width}/${size.height}",
-        style: TextStyle(fontSize: 20,color: Colors.white),
+        style: TextStyle(fontSize: 20, color: Colors.white),
       ),
       trailing: _right(),
     );
@@ -84,14 +84,9 @@ class _HeaderState extends State<Header> {
   void _onClickOptionMenu(context, String value) {
     print("_onClickOptionMenu $value");
     if ("logout" == value) {
-
     } else if ("meus_dados" == value) {
-
     } else if ("alterar_senha" == value) {
-
-    } else {
-
-    }
+    } else {}
 
     alert(context, value);
   }

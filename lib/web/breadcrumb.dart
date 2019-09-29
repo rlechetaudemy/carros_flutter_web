@@ -1,4 +1,3 @@
-
 import 'package:carros_flutter_web/app_model.dart';
 import 'package:carros_flutter_web/colors.dart';
 import 'package:flutter/material.dart';
@@ -13,13 +12,12 @@ class BreadCrumb extends StatefulWidget {
 class _BreadCrumbState extends State<BreadCrumb> {
   @override
   Widget build(BuildContext context) {
-    AppModel app = Provider.of<AppModel>(context);
+    PagesModel app = Provider.of<PagesModel>(context);
 
     return ListView.builder(
       itemCount: app.pages.length,
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) {
-
+      scrollDirection: Axis.horizontal,
+      itemBuilder: (context, index) {
         PageInfo info = app.pages[index];
 
         return InkWell(
@@ -28,21 +26,28 @@ class _BreadCrumbState extends State<BreadCrumb> {
             children: <Widget>[
               ConstrainedBox(
                 constraints: BoxConstraints.expand(width: 32),
-                child: Icon(index == 0 ? FontAwesomeIcons.home : FontAwesomeIcons.chevronRight,
-                color: AppColors.blue,),
-              ) ,
-              Text(info.title, style: TextStyle(fontSize: 20),)
+                child: Icon(
+                  index == 0
+                      ? FontAwesomeIcons.home
+                      : FontAwesomeIcons.chevronRight,
+                  color: AppColors.blue,
+                ),
+              ),
+              Text(
+                info.title,
+                style: TextStyle(fontSize: 20),
+              )
             ],
           ),
         );
-
-    },);
+      },
+    );
   }
 
   _onClickPage(int index) {
-    AppModel app = Provider.of<AppModel>(context);
+    PagesModel app = Provider.of<PagesModel>(context);
 
-    if(index == 0) {
+    if (index == 0) {
       app.popAll();
     } else {
       app.popTo(index);

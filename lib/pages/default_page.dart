@@ -17,6 +17,4 @@ class _DefaultPageState extends State<DefaultPage> {
   _body() {
     return DebugWidgetSize();
   }
-
-
 }

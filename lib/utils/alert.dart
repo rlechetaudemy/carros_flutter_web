@@ -15,7 +15,7 @@ alert(BuildContext context, String msg, {Function callback}) {
               child: Text("OK"),
               onPressed: () {
                 Navigator.pop(context);
-                if(callback != null) {
+                if (callback != null) {
                   callback();
                 }
               },
@@ -48,7 +48,7 @@ alertConfirm(BuildContext context, String msg, {Function confirmCallback}) {
               child: Text("Confirmar"),
               onPressed: () {
                 Navigator.pop(context);
-                if(confirmCallback != null) {
+                if (confirmCallback != null) {
                   confirmCallback();
                 }
               },

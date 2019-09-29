@@ -1,8 +1,13 @@
 import 'package:carros_flutter_web/app_model.dart';
 import 'package:carros_flutter_web/colors.dart';
+import 'package:carros_flutter_web/domain/user.dart';
 import 'package:carros_flutter_web/home.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+bool mobile = false;
+
+Usuario user;
 
 void main() => runApp(MyApp());
 
@@ -10,9 +15,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers:[
+      providers: [
         ChangeNotifierProvider(
-          builder: (context) => AppModel(),
+          builder: (context) => PagesModel(),
         )
       ],
       child: MaterialApp(

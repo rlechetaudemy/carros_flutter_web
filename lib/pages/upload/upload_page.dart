@@ -24,7 +24,7 @@ class _UploadPageState extends State<UploadPage> {
   void initState() {
     super.initState();
 
-    subscription = uploadHelper.stream.listen((UploadState state){
+    subscription = uploadHelper.stream.listen((UploadState state) {
       _setUploadState(state);
     });
   }
