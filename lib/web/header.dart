@@ -1,4 +1,6 @@
+import 'package:carros_flutter_web/app_model.dart';
 import 'package:carros_flutter_web/main.dart';
+import 'package:carros_flutter_web/pages/login/usuario.dart';
 import 'package:carros_flutter_web/utils/alert.dart';
 import 'package:flutter/material.dart';
 
@@ -31,7 +33,7 @@ class _HeaderState extends State<Header> {
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         Text(
-          user.nome,
+          "${user?.nome}",
           style: TextStyle(color: Colors.white, fontSize: 18),
         ),
         SizedBox(
@@ -39,7 +41,7 @@ class _HeaderState extends State<Header> {
         ),
         InkWell(
           child: CircleAvatar(
-            backgroundImage: NetworkImage(user.urlFoto),
+            backgroundImage: NetworkImage("${user?.urlFoto}"),
           ),
           onTap: () {
             // abre o popup menu
@@ -84,10 +86,11 @@ class _HeaderState extends State<Header> {
   void _onClickOptionMenu(context, String value) {
     print("_onClickOptionMenu $value");
     if ("logout" == value) {
+      Usuario.logout(context);
+
+      PagesModel.get(context).popAll();
     } else if ("meus_dados" == value) {
     } else if ("alterar_senha" == value) {
     } else {}
-
-    alert(context, value);
   }
 }
