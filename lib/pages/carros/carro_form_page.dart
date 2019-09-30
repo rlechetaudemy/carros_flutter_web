@@ -17,7 +17,7 @@ import 'package:flutter/material.dart';
 class CarroFormPage extends StatefulWidget {
   Carro carro;
 
-  CarroFormPage(this.carro) : super();
+  CarroFormPage({this.carro}) : super();
 
   @override
   _CarroFormPageState createState() => _CarroFormPageState();
@@ -152,7 +152,7 @@ class _CarroFormPageState extends State<CarroFormPage> {
                           )
                         : _foto(),
                     SizedBox(
-                      height: 40,
+                      height: 2,
                     ),
                     Text(
                       uploading
@@ -175,22 +175,20 @@ class _CarroFormPageState extends State<CarroFormPage> {
   }
 
   _foto() {
+    String url = carro != null ? carro.urlFoto : null;
+    if (urlFoto != null) {
+      // Se tirou foto, fica com a foto nova
+      url = urlFoto;
+    }
+
     return ConstrainedBox(
       constraints: BoxConstraints(
-        maxWidth: 1000,
-        maxHeight: 1000,
+        maxWidth: 250,
+        maxHeight: 250,
       ),
-      child: carro != null
-          ? Image.network(
-              urlFoto ??
-                  carro.urlFoto ??
-                  "http://www.livroandroid.com.br/livro/carros/esportivos/Ferrari_FF.png",
-//              fit: BoxFit.cover,
-            )
-          : Image.asset(
-              "assets/imgs/car_logo.png",
-              color: AppColors.blue,
-            ),
+      child: url != null
+          ? Image.network(url)
+          : Image.asset("assets/imgs/car_logo.png", color: AppColors.blue),
     );
   }
 
@@ -318,12 +316,15 @@ class _CarroFormPageState extends State<CarroFormPage> {
     ApiResponse<String> response =
         await UploadApi.upload(file.fileName, file.mimeType, file.base64);
 
+    print("Ok ${response.ok}");
+    print("Ok url ${response.result}");
+
     if (response.ok) {
       String url = response.result;
       print(url);
       setState(() {
-        this.urlFoto = url;
         uploading = false;
+        this.urlFoto = url;
       });
     }
   }

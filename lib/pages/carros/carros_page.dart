@@ -171,7 +171,7 @@ class _CarrosPageState extends State<CarrosPage>
     } else {
       PagesModel nav = PagesModel.get(context);
 //      nav.push(PageInfo(item.title, item.page), replace: true);
-      nav.push(PageInfo("Carros", CarroFormPage(c)));
+      nav.push(PageInfo("Carros", CarroFormPage(carro: c)));
     }
   }
 

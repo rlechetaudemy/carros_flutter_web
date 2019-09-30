@@ -1,6 +1,8 @@
 import 'package:carros_flutter_web/app_model.dart';
 import 'package:carros_flutter_web/main.dart';
 import 'package:carros_flutter_web/pages/login/usuario.dart';
+import 'package:carros_flutter_web/pages/senha/alterar_senha_page.dart';
+import 'package:carros_flutter_web/pages/usuarios/meus_dados_page.dart';
 import 'package:carros_flutter_web/utils/alert.dart';
 import 'package:flutter/material.dart';
 
@@ -92,7 +94,10 @@ class _HeaderState extends State<Header> {
 
       PagesModel.get(context).popAll();
     } else if ("meus_dados" == value) {
+      Usuario user = AppModel.get(context).user;
+      PagesModel.get(context).push(PageInfo("Meus Dados", MeusDadosPage(user)));
     } else if ("alterar_senha" == value) {
+      PagesModel.get(context).push(PageInfo("Alterar Senha", AlterarSenhaPage()));
     } else {}
   }
 }
