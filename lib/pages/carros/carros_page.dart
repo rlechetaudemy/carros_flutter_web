@@ -7,6 +7,7 @@ import 'package:carros_flutter_web/pages/carros/carro_form_page.dart';
 import 'package:carros_flutter_web/pages/carros/carro_page.dart';
 import 'package:carros_flutter_web/pages/carros/carros_bloc.dart';
 import 'package:carros_flutter_web/utils/nav.dart';
+import 'package:carros_flutter_web/web/breadcrumb.dart';
 import 'package:carros_flutter_web/widgets/material_container.dart';
 import 'package:carros_flutter_web/widgets/text_error.dart';
 import 'package:flutter/material.dart';
@@ -57,7 +58,18 @@ class _CarrosPageState extends State<CarrosPage>
   Widget build(BuildContext context) {
     super.build(context);
 
-    return _stream();
+    return BreadCrumb(
+      child: _stream(),
+        actions: [
+        Material(
+          color: Colors.transparent,
+          child: IconButton(
+            icon: Icon(Icons.add),
+            onPressed: _onClickAdd,
+          ),
+        )
+      ],
+    );
 
 //    return Breadcrumb(
 //      context,
@@ -112,9 +124,9 @@ class _CarrosPageState extends State<CarrosPage>
         itemBuilder: (context, index) {
           Carro c = carros[index];
 
-          return MaterialContainer(
+          return StackMaterialContainer(
             child: _cardCarro(c, columns),
-            onPressed: () => _onClickCarro(c),
+            onTap: () => _onClickCarro(c),
           );
         },
       ),

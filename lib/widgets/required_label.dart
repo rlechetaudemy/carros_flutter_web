@@ -14,6 +14,7 @@ class RequiredLabel extends StatelessWidget {
       children: <Widget>[
         AppText(
           label,
+          bold: true,
 //          color: AppColors.blue,
         ),
         required

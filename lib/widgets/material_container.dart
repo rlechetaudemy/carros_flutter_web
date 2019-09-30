@@ -1,11 +1,29 @@
 import 'package:flutter/material.dart';
 
-class MaterialContainer extends StatelessWidget {
+class OnTapContainer extends StatelessWidget {
   final Widget child;
-  final Function onPressed;
+  final Function onTap;
+
+  OnTapContainer({@required this.child, @required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+      ),
+    );
+  }
+}
+
+class StackMaterialContainer extends StatelessWidget {
+  final Widget child;
+  final Function onTap;
   final StackFit fit;
 
-  MaterialContainer({this.child, this.onPressed, this.fit = StackFit.loose});
+  StackMaterialContainer(
+      {this.child, this.onTap, this.fit = StackFit.loose});
 
   @override
   Widget build(BuildContext context) {
@@ -14,10 +32,11 @@ class MaterialContainer extends StatelessWidget {
       children: <Widget>[
         child,
         Positioned.fill(
-          child: new Material(
+          child: Material(
             color: Colors.transparent,
-            child: new InkWell(
-              onTap: onPressed,
+            child: InkWell(
+              hoverColor: Color(0xccE3F2FD),
+              onTap: onTap,
             ),
           ),
         )

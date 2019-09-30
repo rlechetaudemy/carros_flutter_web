@@ -64,19 +64,20 @@ class _HomePageState extends State<HomePage> {
     return Container(
       padding: EdgeInsets.all(16),
       width: showMenu ? size.width - menuWidth : size.width,
-      child: Column(
-        children: <Widget>[
-          Container(
-            color: Colors.grey[100],
-            width: size.width,
-            height: 60,
-            child: BreadCrumb(),
-          ),
-          Expanded(
-            child: Body(),
-          ),
-        ],
-      ),
+      child: Body(),
+//      child: Column(
+//        children: <Widget>[
+//          Container(
+//            color: Colors.grey[100],
+//            width: size.width,
+//            height: 60,
+//            child: BreadCrumb(),
+//          ),
+//          Expanded(
+//            child: Body(),
+//          ),
+//        ],
+//      ),
     );
   }
 }

@@ -13,9 +13,8 @@ class AppModel {
 
   Usuario get user => _user;
 
-  void setUser(Usuario user) {
-    this._user = user;
-    user = user;
+  void setUser(Usuario u) {
+    this._user = u;
   }
 }
 

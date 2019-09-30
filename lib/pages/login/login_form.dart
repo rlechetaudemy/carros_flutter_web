@@ -1,35 +1,25 @@
 import 'package:carros_flutter_web/app_model.dart';
 import 'package:carros_flutter_web/colors.dart';
+import 'package:carros_flutter_web/home.dart';
 import 'package:carros_flutter_web/pages/login/login_bloc.dart';
 import 'package:carros_flutter_web/pages/login/usuario.dart';
+import 'package:carros_flutter_web/pages/senha/esqueci_senha_page.dart';
 import 'package:carros_flutter_web/utils/alert.dart';
 import 'package:carros_flutter_web/utils/api_response.dart';
+import 'package:carros_flutter_web/utils/nav.dart';
 import 'package:carros_flutter_web/widgets/app_button.dart';
 import 'package:carros_flutter_web/widgets/app_text_field.dart';
 import 'package:flutter/material.dart';
 
-abstract class LoginCallback {
-  cadastrar();
-
-  esqueciSenha();
-
-  loginOk(Usuario user);
-}
-
 class LoginForm extends StatefulWidget {
-  LoginCallback callback;
-  bool showTitle;
-
-  LoginForm({@required this.callback, this.showTitle = false});
 
   @override
   _LoginFormState createState() => _LoginFormState();
 }
 
 class _LoginFormState extends State<LoginForm> {
-  LoginCallback get callback => widget.callback;
 
-  bool get showTitle => widget.showTitle;
+  bool get mobile => MediaQuery.of(context).size.width <= 500;
 
   AppModel get app => AppModel.get(context);
 
@@ -38,10 +28,11 @@ class _LoginFormState extends State<LoginForm> {
   final _loginBloc = LoginBloc();
 
   final _tLogin = TextEditingController(text: "admin");
-
   final _tSenha = TextEditingController(text: "123");
 
   final _focusSenha = FocusNode();
+
+  bool checkManterLogado = false;
 
   @override
   Widget build(BuildContext context) {
@@ -50,17 +41,6 @@ class _LoginFormState extends State<LoginForm> {
       child: ListView(
         shrinkWrap: true,
         children: <Widget>[
-          showTitle
-              ? Container(
-                  child: Center(
-                    child: Text(
-                      "Carros",
-                      style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                )
-              : Container(),
           AppTextField(
             label: "Login",
             hint: "Digite o login",
@@ -92,9 +72,15 @@ class _LoginFormState extends State<LoginForm> {
                     "Manter logado",
                     style: TextStyle(color: AppColors.blue, fontSize: 14),
                   ),
-                  Checkbox(
-                    value: true,
-                    onChanged: (b) => print(b),
+                  StreamBuilder<bool>(
+                    stream: _loginBloc.checkManterLogado.stream,
+                    initialData: false,
+                    builder: (context, snapshot) {
+                      return Checkbox(
+                          value: snapshot.data,
+                          onChanged: (b) =>
+                              _loginBloc.checkManterLogado.add(b));
+                    },
                   ),
                 ],
               ),
@@ -104,9 +90,10 @@ class _LoginFormState extends State<LoginForm> {
                   child: Text(
                     "Esqueci a senha",
                     style: TextStyle(
-                        color: AppColors.blue,
-                        fontSize: 14,
-                        decoration: TextDecoration.underline),
+                      color: AppColors.blue,
+                      fontSize: 14,
+                      decoration: TextDecoration.underline,
+                    ),
                   ),
                 ),
               ),
@@ -134,9 +121,10 @@ class _LoginFormState extends State<LoginForm> {
               Text(
                 "Ainda não é cadastrado?",
                 style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.grey,
-                    decoration: TextDecoration.underline),
+                  fontSize: 14,
+                  color: Colors.grey,
+                  decoration: TextDecoration.underline,
+                ),
               ),
               SizedBox(
                 width: 10,
@@ -147,9 +135,10 @@ class _LoginFormState extends State<LoginForm> {
                   child: Text(
                     "Crie uma conta",
                     style: TextStyle(
-                        fontSize: 14,
-                        color: AppColors.blue,
-                        decoration: TextDecoration.underline),
+                      fontSize: 14,
+                      color: AppColors.blue,
+                      decoration: TextDecoration.underline,
+                    ),
                   ),
                 ),
               ),
@@ -175,11 +164,9 @@ class _LoginFormState extends State<LoginForm> {
 
     ApiResponse<Usuario> response =
         await _loginBloc.login(context, login, senha);
-    print(response);
 
     if (response.ok) {
-      Usuario user = response.result;
-      callback.loginOk(user);
+      push(context, HomePage(), replace: true);
     } else {
       alert(context, response.msg);
     }
@@ -203,11 +190,15 @@ class _LoginFormState extends State<LoginForm> {
   }
 
   void _onClickEsqueciSenha() {
-    callback.esqueciSenha();
+    //    if(mobile) {
+//      push(context, EsqueciSenhaMobilePage());
+//    } else {
+    push(context, EsqueciSenhaPage());
+//    }
   }
 
   void _onClickCadastrar() {
-    callback.cadastrar();
+    alert(context, "Cadastrar");
   }
 
   @override

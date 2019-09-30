@@ -7,10 +7,10 @@ import 'package:carros_flutter_web/utils/api_response.dart';
 import 'package:carros_flutter_web/utils/bloc.dart';
 
 class LoginBloc {
+  final checkManterLogado = BooleanBloc();
   final progress = BooleanBloc();
 
-  Future<ApiResponse<Usuario>> login(
-      context, String login, String senha) async {
+  Future<ApiResponse<Usuario>> login(context, String login, String senha) async {
     progress.set(true);
 
     ApiResponse<Usuario> response = await LoginApi.login(login, senha);
@@ -21,6 +21,7 @@ class LoginBloc {
 
       print(user);
 
+      // Salva no app model
       AppModel app = AppModel.get(context);
       app.setUser(user);
     }
@@ -34,5 +35,6 @@ class LoginBloc {
 
   void dispose() {
     progress.dispose();
+    checkManterLogado.dispose();
   }
 }

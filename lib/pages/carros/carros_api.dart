@@ -21,7 +21,7 @@ class CarrosApi {
 
     print("GET > $url");
 
-    final response = await http.get(url);
+    final response = await http.get(context, url);
 
     print('Response status: ${response.statusCode}');
     print('Response body: ${response.body}');
@@ -35,7 +35,7 @@ class CarrosApi {
     return carros;
   }
 
-  static Future<ApiResponse> save(Carro c) async {
+  static Future<ApiResponse> save(context, Carro c) async {
     try {
       String url = "$BASE_URL/carros";
 
@@ -44,7 +44,7 @@ class CarrosApi {
       print("POST > $url");
       print("body: $json");
 
-      final response = await http.post(url, body: json);
+      final response = await http.post(context, url, body: json);
 
       print('Response status: ${response.statusCode}');
       print('Response body: ${response.body}');
@@ -68,13 +68,13 @@ class CarrosApi {
     }
   }
 
-  static Future<ApiResponse> delete(Carro c) async {
+  static Future<ApiResponse> delete(context,Carro c) async {
     try {
       String url = "$BASE_URL/carros/${c.id}";
 
       print("DELETE > $url");
 
-      var response = await http.delete(url);
+      var response = await http.delete(context, url);
 
       print('Response status: ${response.statusCode}');
       print('Response body: ${response.body}');

@@ -14,6 +14,8 @@ class _HeaderState extends State<Header> {
 
   Size get size => MediaQuery.of(context).size;
 
+  Usuario get user => AppModel.get(context).user;
+
   @override
   Widget build(BuildContext context) {
     return ListTile(

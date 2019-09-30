@@ -8,6 +8,7 @@ import 'package:carros_flutter_web/pages/upload/upload_api.dart';
 import 'package:carros_flutter_web/pages/upload/upload_helper.dart';
 import 'package:carros_flutter_web/utils/alert.dart';
 import 'package:carros_flutter_web/utils/api_response.dart';
+import 'package:carros_flutter_web/web/breadcrumb.dart';
 import 'package:carros_flutter_web/widgets/app_button.dart';
 import 'package:carros_flutter_web/widgets/app_text_field.dart';
 import 'package:flutter/material.dart';
@@ -70,19 +71,20 @@ class _CarroFormPageState extends State<CarroFormPage> {
 
   @override
   Widget build(BuildContext context) {
-    return body();
-//    return Breadcrumb(
-//      context,
-//      child: body(),
-//      actions: carro != null
-//          ? [
-//              IconButton(
-//                icon: Icon(Icons.delete_forever, color: Colors.red),
-//                onPressed: _onClickDelete,
-//              )
-//            ]
-//          : null,
-//    );
+    return BreadCrumb(
+      child: body(),
+      actions: carro != null
+          ? [
+              Material(
+                color: Colors.transparent,
+                child: IconButton(
+                  icon: Icon(Icons.delete_forever, color: Colors.red),
+                  onPressed: _onClickDelete,
+                ),
+              )
+            ]
+          : null,
+    );
   }
 
   body() {
@@ -189,7 +191,7 @@ class _CarroFormPageState extends State<CarroFormPage> {
 //              fit: BoxFit.cover,
             )
           : Image.asset(
-              "imgs/car_logo.png",
+              "assets/imgs/car_logo.png",
               color: AppColors.blue,
             ),
     );
@@ -353,7 +355,7 @@ class _CarroFormPageState extends State<CarroFormPage> {
 
     print("Salvar o carro $c");
 
-    ApiResponse response = await CarrosApi.save(c);
+    ApiResponse response = await CarrosApi.save(context, c);
 
     if (response.ok) {
       alert(context, "Carro salvo com sucesso", callback: () {

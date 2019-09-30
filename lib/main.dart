@@ -1,13 +1,10 @@
 import 'package:carros_flutter_web/app_model.dart';
 import 'package:carros_flutter_web/colors.dart';
-import 'package:carros_flutter_web/domain/user.dart';
-import 'package:carros_flutter_web/home.dart';
+import 'package:carros_flutter_web/pages/login/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 bool mobile = false;
-
-Usuario user;
 
 void main() => runApp(MyApp());
 
@@ -26,7 +23,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: _theme(),
-        home: HomePage(),
+        home: LoginPage(),
       ),
     );
   }
@@ -36,8 +33,8 @@ class MyApp extends StatelessWidget {
       fontFamily: "Raleway",
       primaryColor: AppColors.blue,
       scaffoldBackgroundColor: Colors.white,
-      splashColor: Colors.blue,
-      hoverColor: Colors.blue[100],
+      splashColor: Colors.blue[600],
+      hoverColor: Colors.blue[50],
       textTheme: TextTheme(
         body1: TextStyle(
           color: AppColors.blue,

@@ -33,7 +33,7 @@ class _EsqueciSenhaPageState extends State<EsqueciSenhaPage> {
       fit: StackFit.expand,
       children: <Widget>[
         Image.asset(
-          "imgs/background.jpg",
+          "assets/imgs/background.jpg",
           fit: BoxFit.fill,
           width: double.infinity,
         ),
