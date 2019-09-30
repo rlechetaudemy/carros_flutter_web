@@ -8,9 +8,12 @@ class DeleteButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      icon: Icon(Icons.delete_forever, color: AppColors.blue),
-      onPressed: onPressed,
+    return Material(
+      color: Colors.transparent,
+      child: IconButton(
+        icon: Icon(Icons.delete_forever, color: AppColors.blue),
+        onPressed: onPressed,
+      ),
     );
   }
 }

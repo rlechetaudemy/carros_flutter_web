@@ -40,7 +40,7 @@ class _UsuariosPageState extends State<UsuariosPage>
       child: BreadCrumb(
         child: _stream(),
         actions: [
-          AddButton(
+          AddButton2(
             "+ Novo",
             onPressed: _onClickAdd,
           )

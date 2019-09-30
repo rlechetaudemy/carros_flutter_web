@@ -8,6 +8,7 @@ import 'package:carros_flutter_web/pages/carros/carro_page.dart';
 import 'package:carros_flutter_web/pages/carros/carros_bloc.dart';
 import 'package:carros_flutter_web/utils/nav.dart';
 import 'package:carros_flutter_web/web/breadcrumb.dart';
+import 'package:carros_flutter_web/widgets/add_button.dart';
 import 'package:carros_flutter_web/widgets/material_container.dart';
 import 'package:carros_flutter_web/widgets/text_error.dart';
 import 'package:flutter/material.dart';
@@ -61,13 +62,9 @@ class _CarrosPageState extends State<CarrosPage>
     return BreadCrumb(
       child: _stream(),
         actions: [
-        Material(
-          color: Colors.transparent,
-          child: IconButton(
-            icon: Icon(Icons.add),
+          AddButton(
             onPressed: _onClickAdd,
-          ),
-        )
+          )
       ],
     );
 

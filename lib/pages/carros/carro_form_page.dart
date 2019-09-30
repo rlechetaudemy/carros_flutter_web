@@ -11,6 +11,7 @@ import 'package:carros_flutter_web/utils/api_response.dart';
 import 'package:carros_flutter_web/web/breadcrumb.dart';
 import 'package:carros_flutter_web/widgets/app_button.dart';
 import 'package:carros_flutter_web/widgets/app_text_field.dart';
+import 'package:carros_flutter_web/widgets/delete_button.dart';
 import 'package:flutter/material.dart';
 
 class CarroFormPage extends StatefulWidget {
@@ -75,12 +76,8 @@ class _CarroFormPageState extends State<CarroFormPage> {
       child: body(),
       actions: carro != null
           ? [
-              Material(
-                color: Colors.transparent,
-                child: IconButton(
-                  icon: Icon(Icons.delete_forever, color: Colors.red),
-                  onPressed: _onClickDelete,
-                ),
+              DeleteButton(
+                onPressed: _onClickDelete,
               )
             ]
           : null,

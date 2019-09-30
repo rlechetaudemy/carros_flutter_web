@@ -2,10 +2,28 @@ import 'package:carros_flutter_web/colors.dart';
 import 'package:flutter/material.dart';
 
 class AddButton extends StatelessWidget {
+  Function onPressed;
+
+  AddButton({@required this.onPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: Colors.transparent,
+      child: IconButton(
+        icon: Icon(Icons.add, color: AppColors.blue,),
+        onPressed: onPressed,
+      ),
+    );
+  }
+}
+
+
+class AddButton2 extends StatelessWidget {
   String text;
   Function onPressed;
 
-  AddButton(this.text, {this.onPressed});
+  AddButton2(this.text, {@required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -17,27 +35,6 @@ class AddButton extends StatelessWidget {
     ];
 
     const radius = 20.0;
-
-//    return Container(
-//      width: 100,
-//      height: 50.0,
-//      decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),gradient: LinearGradient(colors: colors), boxShadow: [
-//        BoxShadow(
-//          color: Colors.grey[500],
-//          offset: Offset(0.0, 1.5),
-//          blurRadius: 1.5,
-//        ),
-//      ]),
-//      child: MaterialContainer(
-//        child: Center(
-//          child: Text(
-//            text,
-//            style: TextStyle(fontSize: 16,color: textColor),
-//          ),
-//        ),
-//        onPressed: onPressed,
-//      ),
-//    );
 
     return RaisedButton(
       textColor: textColor,

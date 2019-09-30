@@ -22,6 +22,7 @@ class _BreadCrumbState extends State<BreadCrumb> {
     return Column(
       children: <Widget>[
         Container(
+          padding: EdgeInsets.only(left: 10, right: 10),
           color: Colors.grey[100],
 //            width: size.width,
           height: 60,
