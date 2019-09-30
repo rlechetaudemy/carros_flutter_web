@@ -1,13 +1,4 @@
-import 'package:carros_flutter_web/app_model.dart';
-import 'package:carros_flutter_web/main.dart';
-import 'package:carros_flutter_web/pages/login/usuario.dart';
-import 'package:carros_flutter_web/pages/usuarios/usuario_page.dart';
-import 'package:carros_flutter_web/pages/usuarios/usuarios_bloc.dart';
-import 'package:carros_flutter_web/utils/nav.dart';
-import 'package:carros_flutter_web/web/breadcrumb.dart';
-import 'package:carros_flutter_web/widgets/add_button.dart';
-import 'package:carros_flutter_web/widgets/text_error.dart';
-import 'package:flutter/material.dart';
+import 'package:carros_flutter_web/imports.dart';
 
 class UsuariosPage extends StatefulWidget {
   UsuariosPage();
@@ -40,8 +31,7 @@ class _UsuariosPageState extends State<UsuariosPage>
       child: BreadCrumb(
         child: _stream(),
         actions: [
-          AddButton2(
-            "+ Novo",
+          AddButton(
             onPressed: _onClickAdd,
           )
         ],
@@ -182,9 +172,10 @@ class _UsuariosPageState extends State<UsuariosPage>
 
   _onClickUsuario(Usuario u) {
     if (mobile) {
-      push(context, UsuarioPage(usuario:u));
+      push(context, UsuarioPage(usuario: u));
     } else {
-      PagesModel.get(context).push(PageInfo("Usuario ${u.nome}",UsuarioPage(usuario:u)) );
+      PagesModel.get(context)
+          .push(PageInfo("Usuario ${u.nome}", UsuarioPage(usuario: u)));
     }
   }
 

@@ -1,8 +1,5 @@
 import 'dart:convert' as convert;
-
-import 'package:carros_flutter_web/constants.dart';
-import 'package:carros_flutter_web/pages/carros/carro.dart';
-import 'package:carros_flutter_web/utils/api_response.dart';
+import 'package:carros_flutter_web/imports.dart';
 import 'package:carros_flutter_web/utils/http_helper.dart' as http;
 
 class TipoCarro {

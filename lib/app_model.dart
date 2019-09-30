@@ -1,7 +1,4 @@
-import 'package:carros_flutter_web/pages/default_page.dart';
-import 'package:carros_flutter_web/pages/login/usuario.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:carros_flutter_web/imports.dart';
 
 class AppModel {
   //static Usuario getUsuario(context) => Provider.of<AppModel>(context,listen: false).user;

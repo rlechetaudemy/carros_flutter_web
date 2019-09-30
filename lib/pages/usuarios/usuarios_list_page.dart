@@ -1,13 +1,4 @@
-import 'dart:async';
-
-import 'package:carros_flutter_web/pages/login/usuario.dart';
-import 'package:carros_flutter_web/pages/usuarios/usuario_page.dart';
-import 'package:carros_flutter_web/pages/usuarios/usuarios_bloc.dart';
-import 'package:carros_flutter_web/utils/nav.dart';
-import 'package:carros_flutter_web/web/breadcrumb.dart';
-import 'package:carros_flutter_web/widgets/material_container.dart';
-import 'package:carros_flutter_web/widgets/text_error.dart';
-import 'package:flutter/material.dart';
+import 'package:carros_flutter_web/imports.dart';
 
 class UsuariosListPage extends StatefulWidget {
   UsuariosListPage();
@@ -124,7 +115,7 @@ class _UsuariosListPageState extends State<UsuariosListPage>
   }
 
   _onClickUsuario(Usuario u) {
-    push(context, UsuarioPage(usuario:u));
+    push(context, UsuarioPage(usuario: u));
   }
 
   Future<void> _onRefresh() {

@@ -1,20 +1,7 @@
-import 'dart:async';
-
-import 'package:carros_flutter_web/app_model.dart';
-import 'package:carros_flutter_web/main.dart';
-import 'package:carros_flutter_web/pages/carros/carro.dart';
-import 'package:carros_flutter_web/pages/carros/carro_form_page.dart';
-import 'package:carros_flutter_web/pages/carros/carro_page.dart';
-import 'package:carros_flutter_web/pages/carros/carros_bloc.dart';
-import 'package:carros_flutter_web/utils/nav.dart';
-import 'package:carros_flutter_web/web/breadcrumb.dart';
-import 'package:carros_flutter_web/widgets/add_button.dart';
-import 'package:carros_flutter_web/widgets/material_container.dart';
-import 'package:carros_flutter_web/widgets/text_error.dart';
-import 'package:flutter/material.dart';
+import 'package:carros_flutter_web/imports.dart';
 
 class CarrosPage extends StatefulWidget {
-  String tipo;
+  final String tipo;
 
   CarrosPage({this.tipo});
 
@@ -35,19 +22,6 @@ class _CarrosPageState extends State<CarrosPage>
   @override
   bool get wantKeepAlive => true;
 
-  _fontSize() {
-    if (mobile) {
-      return 22;
-    }
-
-    if (size.width > 1200) {
-      return 22;
-    } else if (size.width < 800) {
-      return 10;
-    }
-    return 14;
-  }
-
   @override
   void initState() {
     super.initState();
@@ -61,23 +35,12 @@ class _CarrosPageState extends State<CarrosPage>
 
     return BreadCrumb(
       child: _stream(),
-        actions: [
-          AddButton(
-            onPressed: _onClickAdd,
-          )
+      actions: [
+        AddButton(
+          onPressed: _onClickAdd,
+        )
       ],
     );
-
-//    return Breadcrumb(
-//      context,
-//      child: _stream(),
-//      actions: [
-//        IconButton(
-//          icon: Icon(Icons.add),
-//          onPressed: _onClickAdd,
-//        )
-//      ],
-//    );
   }
 
   _stream() {
@@ -106,62 +69,78 @@ class _CarrosPageState extends State<CarrosPage>
     );
   }
 
-  _grid(List<Carro> carros) {
-    int columns = size.width > 1200 ? 3 : 2;
-    if (mobile) {
+  int _columns(constraints) {
+    int columns = constraints.maxWidth > 800 ? 3 : 2;
+    if (constraints.maxWidth <= 500) {
       columns = 1;
     }
-
-    return Container(
-      padding: EdgeInsets.all(16),
-      child: GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: columns, childAspectRatio: 1.8),
-        itemCount: carros.length,
-        itemBuilder: (context, index) {
-          Carro c = carros[index];
-
-          return StackMaterialContainer(
-            child: _cardCarro(c, columns),
-            onTap: () => _onClickCarro(c),
-          );
-        },
-      ),
-    );
+    return columns;
   }
 
-  _cardCarro(Carro c, int columns) {
-    return Card(
-      child: Container(
-        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Center(
-              child: ConstrainedBox(
-                constraints: BoxConstraints(
-                  maxWidth: 240,
-                  maxHeight: 120,
+  _grid(List<Carro> carros) {
+    return LayoutBuilder(builder: (context, constraints) {
+      int columns = _columns(constraints);
+
+      return Container(
+        padding: EdgeInsets.all(16),
+        child: GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: columns,
+            childAspectRatio: 1.8,
+            mainAxisSpacing: 20,
+            crossAxisSpacing: 20,
+          ),
+          itemCount: carros.length,
+          itemBuilder: (context, index) {
+            Carro c = carros[index];
+
+            return StackMaterialContainer(
+              child: _cardCarro(c),
+              onTap: () => _onClickCarro(c),
+            );
+          },
+        ),
+      );
+    });
+  }
+
+  _cardCarro(Carro c) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+
+        return Card(
+          child: Container(
+//        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Center(
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxWidth: 240,
+                      maxHeight: 120,
+                    ),
+                    child: Image.network(
+                      c.urlFoto ??
+                          "http://www.livroandroid.com.br/livro/carros/esportivos/Ferrari_FF.png",
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                 ),
-                child: Image.network(
-                  c.urlFoto ??
-                      "http://www.livroandroid.com.br/livro/carros/esportivos/Ferrari_FF.png",
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            columns == 3
-                ? Text(
-                    c.nome,
+                Center(
+                  child: Text(
+                    "${c.nome}",
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: _fontSize()),
-                  )
-                : Container()
-          ],
-        ),
-      ),
+                    style: TextStyle(fontSize: fontSize(constraints.maxWidth * 0.05)),
+                  ),
+                )
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 

@@ -1,10 +1,5 @@
-import 'package:carros_flutter_web/app_model.dart';
-import 'package:carros_flutter_web/colors.dart';
-import 'package:carros_flutter_web/home.dart';
+import 'package:carros_flutter_web/imports.dart';
 import 'package:carros_flutter_web/pages/login/login_form.dart';
-import 'package:carros_flutter_web/pages/login/usuario.dart';
-import 'package:carros_flutter_web/utils/nav.dart';
-import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
   @override

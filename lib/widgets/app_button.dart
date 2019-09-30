@@ -2,10 +2,10 @@ import 'package:carros_flutter_web/colors.dart';
 import 'package:flutter/material.dart';
 
 class AppButton extends StatelessWidget {
-  String text;
-  Function onPressed;
-  bool showProgress;
-  bool whiteMode;
+  final String text;
+  final Function onPressed;
+  final bool showProgress;
+  final bool whiteMode;
 
   AppButton(this.text,
       {this.onPressed, this.showProgress = false, this.whiteMode = false});

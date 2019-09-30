@@ -1,8 +1,4 @@
-import 'dart:async';
-
-import 'package:carros_flutter_web/pages/carros/carro.dart';
-import 'package:carros_flutter_web/pages/carros/carros_api.dart';
-import 'package:carros_flutter_web/utils/bloc.dart';
+import 'package:carros_flutter_web/imports.dart';
 
 class CarrosBloc extends SimpleBloc<List<Carro>> {
   static Map<String, List<Carro>> cache = {};
@@ -25,5 +21,6 @@ class CarrosBloc extends SimpleBloc<List<Carro>> {
       print("Carros error $e > $ex");
       addError(e);
     }
+    return [];
   }
 }

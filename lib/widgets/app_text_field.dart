@@ -4,16 +4,16 @@ import 'package:flutter/material.dart';
 
 class AppTextField extends StatelessWidget {
   final String label;
-  bool required;
-  String hint;
-  double width;
-  bool password;
-  TextEditingController controller;
-  FormFieldValidator<String> validator;
-  TextInputType keyboardType;
-  TextInputAction textInputAction;
-  FocusNode focusNode;
-  FocusNode nextFocus;
+  final bool required;
+  final String hint;
+  final double width;
+  final bool password;
+  final TextEditingController controller;
+  final FormFieldValidator<String> validator;
+  final TextInputType keyboardType;
+  final TextInputAction textInputAction;
+  final FocusNode focusNode;
+  final FocusNode nextFocus;
 
   AppTextField({
     this.label,

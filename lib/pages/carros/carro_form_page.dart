@@ -1,21 +1,7 @@
-import 'dart:async';
-
-import 'package:carros_flutter_web/app_model.dart';
-import 'package:carros_flutter_web/colors.dart';
-import 'package:carros_flutter_web/pages/carros/carro.dart';
-import 'package:carros_flutter_web/pages/carros/carros_api.dart';
-import 'package:carros_flutter_web/pages/upload/upload_api.dart';
-import 'package:carros_flutter_web/pages/upload/upload_helper.dart';
-import 'package:carros_flutter_web/utils/alert.dart';
-import 'package:carros_flutter_web/utils/api_response.dart';
-import 'package:carros_flutter_web/web/breadcrumb.dart';
-import 'package:carros_flutter_web/widgets/app_button.dart';
-import 'package:carros_flutter_web/widgets/app_text_field.dart';
-import 'package:carros_flutter_web/widgets/delete_button.dart';
-import 'package:flutter/material.dart';
+import 'package:carros_flutter_web/imports.dart';
 
 class CarroFormPage extends StatefulWidget {
-  Carro carro;
+  final Carro carro;
 
   CarroFormPage({this.carro}) : super();
 
@@ -374,10 +360,6 @@ class _CarroFormPageState extends State<CarroFormPage> {
 
   _onClickCancelar() {
     PagesModel.get(context).pop();
-  }
-
-  void _onClickAdd() {
-    alert(context, "Adicionar carro!");
   }
 
   void _onClickDelete() {

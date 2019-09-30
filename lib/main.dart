@@ -1,8 +1,6 @@
-import 'package:carros_flutter_web/app_model.dart';
-import 'package:carros_flutter_web/colors.dart';
-import 'package:carros_flutter_web/pages/login/login_page.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+
+
+import 'package:carros_flutter_web/imports.dart';
 
 bool mobile = false;
 

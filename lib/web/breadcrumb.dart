@@ -5,8 +5,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 class BreadCrumb extends StatefulWidget {
-  Widget child;
-  List<Widget> actions;
+  final Widget child;
+  final List<Widget> actions;
 
   BreadCrumb({@required this.child, this.actions});
 
@@ -36,45 +36,47 @@ class _BreadCrumbState extends State<BreadCrumb> {
   }
 
   _listView(PagesModel app) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        ListView.builder(
-          itemCount: app.pages.length,
-          shrinkWrap: true,
-          scrollDirection: Axis.horizontal,
-          itemBuilder: (context, index) {
-            PageInfo info = app.pages[index];
+    return LayoutBuilder(
+      builder: (context, constraints) => Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          ListView.builder(
+            itemCount: app.pages.length,
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (context, index) {
+              PageInfo info = app.pages[index];
 
-            return InkWell(
-              onTap: () => _onClickPage(index),
-              child: Row(
-                children: <Widget>[
-                  ConstrainedBox(
-                    constraints: BoxConstraints.expand(width: 32),
-                    child: Icon(
-                      index == 0
-                          ? FontAwesomeIcons.home
-                          : FontAwesomeIcons.chevronRight,
-                      color: AppColors.blue,
+              return InkWell(
+                onTap: () => _onClickPage(index),
+                child: Row(
+                  children: <Widget>[
+                    ConstrainedBox(
+                      constraints: BoxConstraints.expand(width: 32),
+                      child: Icon(
+                        index == 0
+                            ? FontAwesomeIcons.home
+                            : FontAwesomeIcons.chevronRight,
+                        color: AppColors.blue,
+                      ),
                     ),
-                  ),
-                  Text(
-                    info.title,
-                    style: TextStyle(fontSize: 20),
-                  )
-                ],
-              ),
-            );
-          },
-        ),
-        // Actions na direita
-        widget.actions != null
-            ? Row(
-          children: widget.actions,
-        )
-            : Container()
-      ],
+                    Text(
+                      info.title,
+                      style: TextStyle(fontSize: 20),
+                    )
+                  ],
+                ),
+              );
+            },
+          ),
+          // Actions na direita
+          widget.actions != null
+              ? Row(
+            children: widget.actions,
+          )
+              : Container()
+        ],
+      ),
     );
   }
 

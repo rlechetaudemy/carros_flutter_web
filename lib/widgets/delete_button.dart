@@ -2,7 +2,7 @@ import 'package:carros_flutter_web/colors.dart';
 import 'package:flutter/material.dart';
 
 class DeleteButton extends StatelessWidget {
-  Function onPressed;
+  final Function onPressed;
 
   DeleteButton({@required this.onPressed});
 

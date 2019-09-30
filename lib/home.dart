@@ -1,9 +1,5 @@
-import 'package:carros_flutter_web/constants.dart';
-import 'package:carros_flutter_web/web/body.dart';
-import 'package:carros_flutter_web/web/breadcrumb.dart';
-import 'package:carros_flutter_web/web/header.dart';
-import 'package:carros_flutter_web/web/menu.dart';
-import 'package:flutter/material.dart';
+
+import 'package:carros_flutter_web/imports.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -13,7 +9,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   Size get size => MediaQuery.of(context).size;
 
-  bool get showMenu => size.width > 500;
+  bool get showMenu => size.width > 760;
 
   @override
   Widget build(BuildContext context) {

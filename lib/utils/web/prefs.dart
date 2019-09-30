@@ -1,5 +1,4 @@
 import 'dart:html' as html;
-
 import 'package:key_value_store_web/key_value_store_web.dart';
 
 class Prefs {

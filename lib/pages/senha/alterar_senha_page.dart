@@ -1,9 +1,5 @@
-import 'package:carros_flutter_web/app_model.dart';
-import 'package:carros_flutter_web/utils/alert.dart';
-import 'package:carros_flutter_web/widgets/app_button.dart';
-import 'package:carros_flutter_web/widgets/app_text_field.dart';
-import 'package:carros_flutter_web/widgets/form_template.dart';
-import 'package:flutter/material.dart';
+
+import 'package:carros_flutter_web/imports.dart';
 
 class AlterarSenhaPage extends StatefulWidget {
   @override

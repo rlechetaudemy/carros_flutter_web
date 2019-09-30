@@ -1,16 +1,13 @@
 import 'dart:convert' as convert;
 
-import 'package:carros_flutter_web/pages/login/usuario.dart';
-import 'package:carros_flutter_web/utils/api_response.dart';
+import 'package:carros_flutter_web/imports.dart';
 import 'package:carros_flutter_web/utils/http_helper.dart' as http;
 
 class UsuariosApi {
-
-  static final BASE_URL =
+  static const BASE_URL =
       'https://carros-springboot.herokuapp.com/api/v2/users';
 
   static Future<List<Usuario>> getUsuarios(context) async {
-
     String url = BASE_URL;
     print("GET > $url");
 
@@ -23,7 +20,8 @@ class UsuariosApi {
 
     List list = convert.json.decode(json);
 
-    List<Usuario> carros = list.map<Usuario>((map) => Usuario.fromMap(map)).toList();
+    List<Usuario> carros =
+        list.map<Usuario>((map) => Usuario.fromMap(map)).toList();
 
     return carros;
   }
@@ -53,17 +51,16 @@ class UsuariosApi {
       }
 
       Map mapResponse = convert.json.decode(response.body);
-      return ApiResponse.error(msg:mapResponse["error"]);
+      return ApiResponse.error(msg: mapResponse["error"]);
     } catch (e) {
       print(e);
 
-      return ApiResponse.error(msg:"Não foi possível salvar o carro");
+      return ApiResponse.error(msg: "Não foi possível salvar o carro");
     }
   }
 
   static Future<ApiResponse> delete(context, Usuario u) async {
     try {
-
       String url = '$BASE_URL/${u.id}';
       print("DELETE > $url");
 
@@ -77,11 +74,11 @@ class UsuariosApi {
       }
 
       Map mapResponse = convert.json.decode(response.body);
-      return ApiResponse.error(msg:mapResponse["error"]);
+      return ApiResponse.error(msg: mapResponse["error"]);
     } catch (e) {
       print(e);
     }
 
-    return ApiResponse.error(msg:"Não foi possível deletar o usuário");
+    return ApiResponse.error(msg: "Não foi possível deletar o usuário");
   }
 }

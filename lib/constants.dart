@@ -1,5 +1,5 @@
-String BASE_URL = 'https://carros-springboot.herokuapp.com/api/v2';
+const String BASE_URL = 'https://carros-springboot.herokuapp.com/api/v2';
 
-double headerHeight = 80;
+const double headerHeight = 80;
 
-double menuWidth = 230;
+const double menuWidth = 230;

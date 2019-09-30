@@ -1,10 +1,6 @@
-import 'package:carros_flutter_web/app_model.dart';
-import 'package:carros_flutter_web/colors.dart';
-import 'package:carros_flutter_web/utils/alert.dart';
-import 'package:carros_flutter_web/utils/nav.dart';
-import 'package:carros_flutter_web/widgets/app_button.dart';
-import 'package:carros_flutter_web/widgets/app_text_field.dart';
-import 'package:flutter/material.dart';
+
+
+import 'package:carros_flutter_web/imports.dart';
 
 class EsqueciSenhaPage extends StatefulWidget {
   @override
@@ -99,30 +95,6 @@ class _EsqueciSenhaPageState extends State<EsqueciSenhaPage> {
             ),
           ],
         ),
-      ],
-    );
-  }
-
-  _field(String label, Widget textWidget) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Row(
-          children: <Widget>[
-            Text(label),
-            Text(
-              "*",
-              style: TextStyle(color: Colors.red),
-            ),
-          ],
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        textWidget,
-        SizedBox(
-          height: 20,
-        )
       ],
     );
   }

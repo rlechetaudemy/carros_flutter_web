@@ -2,8 +2,8 @@ import 'package:carros_flutter_web/colors.dart';
 import 'package:flutter/material.dart';
 
 class FormTemplate extends StatelessWidget {
-  String title;
-  Widget form;
+  final String title;
+  final Widget form;
 
   FormTemplate(this.title, this.form);
 
@@ -25,7 +25,9 @@ class FormTemplate extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(20),
             decoration: BoxDecoration(
-                color: Colors.white, borderRadius: BorderRadius.circular(10)),
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+            ),
             child: form,
           )
         ],

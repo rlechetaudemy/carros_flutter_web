@@ -20,7 +20,6 @@ class SimpleBloc<T> {
     }
   }
 
-  @override
   void dispose() {
     _controller.close();
   }

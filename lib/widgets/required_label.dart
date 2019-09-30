@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'app_text.dart';
 
 class RequiredLabel extends StatelessWidget {
-  String label;
-  bool required;
+  final String label;
+  final bool required;
 
   RequiredLabel(this.label, this.required);
 

@@ -1,19 +1,7 @@
-
-import 'package:carros_flutter_web/app_model.dart';
-import 'package:carros_flutter_web/pages/login/usuario.dart';
-import 'package:carros_flutter_web/pages/usuarios/usuarios_api.dart';
-import 'package:carros_flutter_web/pages/usuarios/usuarios_datatable_page.dart';
-import 'package:carros_flutter_web/utils/alert.dart';
-import 'package:carros_flutter_web/utils/api_response.dart';
-import 'package:carros_flutter_web/web/breadcrumb.dart';
-import 'package:carros_flutter_web/widgets/app_button.dart';
-import 'package:carros_flutter_web/widgets/app_text.dart';
-import 'package:carros_flutter_web/widgets/app_text_field.dart';
-import 'package:carros_flutter_web/widgets/delete_button.dart';
-import 'package:flutter/material.dart';
+import 'package:carros_flutter_web/imports.dart';
 
 class UsuarioPage extends StatefulWidget {
-  Usuario usuario;
+  final Usuario usuario;
 
   UsuarioPage({this.usuario});
 
@@ -23,8 +11,6 @@ class UsuarioPage extends StatefulWidget {
 
 class _UsuarioPageState extends State<UsuarioPage> {
   Color color = Colors.grey;
-
-  bool _showProgress = false;
 
   Usuario get usuario => widget.usuario;
 

@@ -1,9 +1,5 @@
 import 'dart:convert' as convert;
-
-import 'package:carros_flutter_web/pages/login/login_page.dart';
-import 'package:carros_flutter_web/utils/nav.dart';
-import 'package:carros_flutter_web/utils/web/prefs.dart';
-import 'package:flutter/material.dart';
+import 'package:carros_flutter_web/imports.dart';
 
 class Usuario {
   int id;

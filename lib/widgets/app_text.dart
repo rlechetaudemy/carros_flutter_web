@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class AppText extends StatelessWidget {
-  String text;
-  double fontSize;
-  Color color;
-  bool bold;
+  final String text;
+  final double fontSize;
+  final Color color;
+  final bool bold;
 
   AppText(
     this.text, {

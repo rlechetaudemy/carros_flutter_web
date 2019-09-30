@@ -1,4 +1,4 @@
-import 'dart:async';
+import 'package:carros_flutter_web/imports.dart';
 import 'dart:html';
 
 class UploadState {
@@ -57,7 +57,7 @@ class UploadHelper {
           String base64 = s.substring(s.indexOf(",") + 1);
 
           String mimeType = s.substring(s.indexOf(":") + 1, s.indexOf(";"));
-          print("mimeType: ${mimeType}");
+          print("mimeType: $mimeType");
 
           final fileUpload = FileUpload(file.name, mimeType, base64);
 

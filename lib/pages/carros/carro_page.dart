@@ -1,12 +1,9 @@
-import 'package:carros_flutter_web/pages/carros/carro.dart';
-import 'package:carros_flutter_web/pages/carros/loripsum_api.dart';
-import 'package:carros_flutter_web/utils/alert.dart';
-import 'package:carros_flutter_web/utils/web/launch.dart';
-import 'package:carros_flutter_web/widgets/app_text.dart';
-import 'package:flutter/material.dart';
+
+
+import 'package:carros_flutter_web/imports.dart';
 
 class CarroPage extends StatefulWidget {
-  Carro carro;
+  final Carro carro;
 
   CarroPage(this.carro);
 
