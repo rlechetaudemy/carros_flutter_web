@@ -15,6 +15,11 @@ class _DefaultPageState extends State<DefaultPage> {
   }
 
   _body() {
-    return DebugWidgetSize();
+    return SizedBox.expand(
+      child: Image.asset(
+        "assets/imgs/background.jpg",
+        fit: BoxFit.fill,
+      ),
+    );
   }
 }
