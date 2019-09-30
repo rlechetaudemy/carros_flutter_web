@@ -385,7 +385,7 @@ class _CarroFormPageState extends State<CarroFormPage> {
   }
 
   delete() async {
-    ApiResponse response = ApiResponse.ok(); //await CarrosApi.delete(carro);
+    ApiResponse response = await CarrosApi.delete(context, carro);
     if (response.ok) {
       alert(context, response.msg, callback: () {
         PagesModel.get(context).pop();

@@ -80,7 +80,8 @@ class CarrosApi {
       print('Response body: ${response.body}');
 
       if (response.statusCode == 200) {
-        return ApiResponse.ok();
+        Map mapResponse = convert.json.decode(response.body);
+        return ApiResponse.ok(msg: mapResponse["msg"]);
       }
     } catch (e) {
       print(e);
