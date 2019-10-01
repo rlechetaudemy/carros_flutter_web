@@ -1,6 +1,7 @@
 import 'package:carros_flutter_web/app_model.dart';
 import 'package:carros_flutter_web/colors.dart';
 import 'package:carros_flutter_web/home.dart';
+import 'package:carros_flutter_web/pages/carros/carros_page.dart';
 import 'package:carros_flutter_web/pages/login/login_bloc.dart';
 import 'package:carros_flutter_web/pages/login/usuario.dart';
 import 'package:carros_flutter_web/pages/senha/esqueci_senha_page.dart';
@@ -12,13 +13,11 @@ import 'package:carros_flutter_web/widgets/app_text_field.dart';
 import 'package:flutter/material.dart';
 
 class LoginForm extends StatefulWidget {
-
   @override
   _LoginFormState createState() => _LoginFormState();
 }
 
 class _LoginFormState extends State<LoginForm> {
-
   bool get mobile => MediaQuery.of(context).size.width <= 500;
 
   AppModel get app => AppModel.get(context);
@@ -27,12 +26,29 @@ class _LoginFormState extends State<LoginForm> {
 
   final _loginBloc = LoginBloc();
 
-  final _tLogin = TextEditingController(text: "admin");
+  final _tLogin = TextEditingController(text: "user");
   final _tSenha = TextEditingController(text: "123");
 
   final _focusSenha = FocusNode();
 
   bool checkManterLogado = false;
+
+  String _validateLogin(String text) {
+    if (text.isEmpty) {
+      return "Digite o login";
+    }
+    return null;
+  }
+
+  String _validateSenha(String text) {
+    if (text.isEmpty) {
+      return "Digite a senha";
+    }
+    if (text.length < 3) {
+      return "A senha precisa ter pelo menos 3 números";
+    }
+    return null;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,9 +93,9 @@ class _LoginFormState extends State<LoginForm> {
                     initialData: false,
                     builder: (context, snapshot) {
                       return Checkbox(
-                          value: snapshot.data,
-                          onChanged: (b) =>
-                              _loginBloc.checkManterLogado.add(b));
+                        value: snapshot.data,
+                        onChanged: (b) => _loginBloc.checkManterLogado.add(b),
+                      );
                     },
                   ),
                 ],
@@ -166,35 +182,22 @@ class _LoginFormState extends State<LoginForm> {
         await _loginBloc.login(context, login, senha);
 
     if (response.ok) {
-      push(context, HomePage(), replace: true);
+
+      Usuario user = response.result;
+      print("> go");
+
+      if(user.isAdmin()) {
+        push(context, HomePage(), replace: true);
+      } else {
+        push(context, CarrosPage(), replace: true);
+      }
     } else {
       alert(context, response.msg);
     }
   }
 
-  String _validateLogin(String text) {
-    if (text.isEmpty) {
-      return "Digite o login";
-    }
-    return null;
-  }
-
-  String _validateSenha(String text) {
-    if (text.isEmpty) {
-      return "Digite a senha";
-    }
-    if (text.length < 3) {
-      return "A senha precisa ter pelo menos 3 números";
-    }
-    return null;
-  }
-
   void _onClickEsqueciSenha() {
-    //    if(mobile) {
-//      push(context, EsqueciSenhaMobilePage());
-//    } else {
     push(context, EsqueciSenhaPage());
-//    }
   }
 
   void _onClickCadastrar() {

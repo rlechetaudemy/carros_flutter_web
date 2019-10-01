@@ -21,19 +21,20 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _autoLogin() {
-    Usuario.get().then((Usuario u) {
-      print("User logado $u");
-      if (u != null) {
-        AppModel.get(context).setUser(u);
+    Usuario.get().then(
+      (Usuario u) {
+        print("User logado auto $u");
+        if (u != null) {
+          AppModel.get(context).setUser(u);
 
-        push(context, HomePage(), replace: true);
-      }
-    });
+          push(context, HomePage(), replace: true);
+        }
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    _autoLogin();
 
     return Scaffold(
       resizeToAvoidBottomPadding: true,
@@ -69,23 +70,17 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  _form() {
-    return LoginForm();
-  }
-
   _title() {
-    if(mobile) {
-      return
-        Container(
-          padding: EdgeInsets.all(16),
-          child: Center(
-            child: Text(
-              "Carros",
-              style:
-              TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-            ),
+    if (mobile) {
+      return Container(
+        padding: EdgeInsets.all(16),
+        child: Center(
+          child: Text(
+            "Carros",
+            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
           ),
-        );
+        ),
+      );
     } else {
       return Container(
         decoration: BoxDecoration(
@@ -98,7 +93,7 @@ class _LoginPageState extends State<LoginPage> {
         height: 76,
         child: Center(
           child: Text(
-            "Carros ${size.width}/${size.height}",
+            "Carros",
             style: TextStyle(
               color: Colors.white,
               fontSize: 22,
@@ -107,5 +102,9 @@ class _LoginPageState extends State<LoginPage> {
         ),
       );
     }
+  }
+
+  _form() {
+    return LoginForm();
   }
 }

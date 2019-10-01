@@ -12,13 +12,6 @@ class Usuario {
 
   bool selected = false;
 
-  String getTokenTest() {
-    if (token != null) {
-      return token.substring(0, 5);
-    }
-    return "";
-  }
-
   Usuario(
       {this.id,
       this.login,
@@ -74,12 +67,8 @@ class Usuario {
     return json;
   }
 
-  static logout(BuildContext context) {
-    Usuario.clear();
-    push(context, LoginPage(), replace: true);
-//    push(context, LoginMobilePage(),replace:true);
-//    Navigator.of(context).pushReplacementNamed("/login");
-//    Navigator.of(context).pushReplacementNamed("/loginMobile");
+  bool isAdmin() {
+    return roles != null && roles.contains("ROLE_ADMIN");
   }
 
   @override

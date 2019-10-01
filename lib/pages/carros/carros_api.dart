@@ -9,7 +9,7 @@ class TipoCarro {
 }
 
 class CarrosApi {
-  static Future<List<Carro>> getCarros(context, String tipo) async {
+  static Future<List<Carro>> getCarros(context, {String tipo}) async {
     String url = "$BASE_URL/carros";
 
     if (tipo != null) {
@@ -21,7 +21,7 @@ class CarrosApi {
     final response = await http.get(context, url);
 
     print('Response status: ${response.statusCode}');
-    print('Response body: ${response.body}');
+    print('Response body: ${response.body.substring(0,50)}');
 
     String json = response.body;
 

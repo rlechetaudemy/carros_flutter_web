@@ -1,4 +1,5 @@
 import 'package:carros_flutter_web/app_model.dart';
+import 'package:carros_flutter_web/imports.dart';
 import 'package:carros_flutter_web/pages/login/usuario.dart';
 import 'package:carros_flutter_web/pages/senha/alterar_senha_page.dart';
 import 'package:carros_flutter_web/pages/usuarios/meus_dados_page.dart';
@@ -88,9 +89,7 @@ class _HeaderState extends State<Header> {
   void _onClickOptionMenu(context, String value) {
     print("_onClickOptionMenu $value");
     if ("logout" == value) {
-      Usuario.logout(context);
-
-      PagesModel.get(context).popAll();
+      logout(context);
     } else if ("meus_dados" == value) {
       Usuario user = AppModel.get(context).user;
       PagesModel.get(context).push(PageInfo("Meus Dados", MeusDadosPage(user)));
@@ -98,4 +97,13 @@ class _HeaderState extends State<Header> {
       PagesModel.get(context).push(PageInfo("Alterar Senha", AlterarSenhaPage()));
     } else {}
   }
+}
+
+// global
+void logout(context) {
+  Usuario.clear();
+
+  push(context, LoginPage(), replace: true);
+
+  PagesModel.get(context).popAll();
 }

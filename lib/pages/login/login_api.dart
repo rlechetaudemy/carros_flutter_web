@@ -31,6 +31,8 @@ class LoginApi {
       if (response.statusCode == 200) {
         final user = Usuario.fromMap(mapResponse);
         print(user);
+        print(user.isAdmin());
+        print("#--#");
 
         return ApiResponse.ok(result: user);
       }
