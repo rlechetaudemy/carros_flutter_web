@@ -48,17 +48,6 @@ class _CarroPageState extends State<CarroPage> {
             icon: Icon(Icons.videocam),
             onPressed: _onClickVideo,
           ),
-          PopupMenuButton<String>(
-            onSelected: _onClickPopupMenu,
-            itemBuilder: (BuildContext context) {
-              return [
-                PopupMenuItem(
-                  value: "Share",
-                  child: Text("Share"),
-                )
-              ];
-            },
-          )
         ],
       ),
       body: _body(),
@@ -158,14 +147,6 @@ class _CarroPageState extends State<CarroPage> {
 //      push(context, VideoPage(carro));
     } else {
       alert(context, "Este carro não possui nenhum vídeo");
-    }
-  }
-
-  _onClickPopupMenu(String value) {
-    switch (value) {
-      case "Share":
-        print("Share !!!");
-        break;
     }
   }
 
