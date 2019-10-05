@@ -51,38 +51,41 @@ class _CarrosListViewState extends State<CarrosListView> {
   }
 
   _grid(List<Carro> carros) {
-    return LayoutBuilder(builder: (context, constraints) {
-      int columns = _columns(constraints);
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        int columns = _columns(constraints);
 
-      return Container(
-        padding: EdgeInsets.all(16),
-        child: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: columns,
-            childAspectRatio: 1.8,
-            mainAxisSpacing: 20,
-            crossAxisSpacing: 20,
+        return Container(
+          padding: EdgeInsets.all(16),
+          child: GridView.builder(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: columns,
+              childAspectRatio: 1.8,
+              mainAxisSpacing: 20,
+              crossAxisSpacing: 20,
+            ),
+            itemCount: carros.length,
+            itemBuilder: (context, index) {
+              Carro c = carros[index];
+
+              return StackMaterialContainer(
+                child: _cardCarro(c),
+                onTap: () => _onClickCarro(c),
+              );
+            },
           ),
-          itemCount: carros.length,
-          itemBuilder: (context, index) {
-            Carro c = carros[index];
-
-            return StackMaterialContainer(
-              child: _cardCarro(c),
-              onTap: () => _onClickCarro(c),
-            );
-          },
-        ),
-      );
-    });
+        );
+      },
+    );
   }
 
   _cardCarro(Carro c) {
     return LayoutBuilder(
       builder: (context, constraints) {
+        double font = constraints.maxWidth * 0.05;
+
         return Card(
           child: Container(
-//        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -93,22 +96,24 @@ class _CarrosListViewState extends State<CarrosListView> {
                       maxWidth: 240,
                       maxHeight: 120,
                     ),
-                    child: Image.network(
-                      c.urlFoto ??
-                          "http://www.livroandroid.com.br/livro/carros/esportivos/Ferrari_FF.png",
-                      fit: BoxFit.cover,
-                    ),
+                    child: c.urlFoto != null
+                        ? Image.network(
+                            c.urlFoto,
+                            fit: BoxFit.cover,
+                          )
+                        : FlutterLogo(
+                            size: 100,
+                          ),
                   ),
                 ),
                 Center(
-                  child: Text(
+                  child: text(
                     "${c.nome}",
+                    fontSize: fontSize(font),
                     maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                        fontSize: fontSize(constraints.maxWidth * 0.05)),
+                    ellipsis: true,
                   ),
-                )
+                ),
               ],
             ),
           ),

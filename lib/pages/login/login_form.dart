@@ -217,7 +217,7 @@ class _LoginFormState extends State<LoginForm> {
   }
 
   void _onClickHelp() {
-    alert(context, "Você pode se logar com o usuário admin/123 ou user/123.");
+    alert(context, "Você pode se logar com os seguintes usuários:\n\n * admin/123 \n\n * user/123.");
   }
 
   @override
