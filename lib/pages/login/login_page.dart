@@ -21,22 +21,19 @@ class _LoginPageState extends State<LoginPage> {
     _autoLogin();
   }
 
-  void _autoLogin() {
+  void _autoLogin() async {
     // Lê do storage
-    Usuario.get().then(
-      (Usuario user) {
-        if (user != null) {
-          // Salva no Provider
-          AppModel.get(context).setUser(user);
+    Usuario user = await Usuario.get();
+    if (user != null) {
+      // Salva no Provider
+      AppModel.get(context).setUser(user);
 
-          if (user.isAdmin()) {
-            push(context, HomePage(), replace: true);
-          } else {
-            push(context, CarrosPage(), replace: true);
-          }
-        }
-      },
-    );
+      if (user.isAdmin()) {
+        push(context, HomePage(), replace: true);
+      } else {
+        push(context, CarrosPage(), replace: true);
+      }
+    }
   }
 
   @override

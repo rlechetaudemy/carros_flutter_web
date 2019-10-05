@@ -1,17 +1,16 @@
 import 'package:carros_flutter_web/imports.dart';
-import 'dart:html';
+import 'package:carros_flutter_web/widgets/text.dart';
 
 // Card usado nas telas de login e esqueci a senha com template do formulário
 class CardForm extends StatelessWidget {
-  String title;
-  Widget child;
+  final String title;
+  final Widget child;
 
   CardForm({@required this.title, @required this.child});
 
   @override
   Widget build(BuildContext context) {
     bool small = smallScreen(context);
-    Size size = MediaQuery.of(context).size;
 
     return Center(
       child: Container(
@@ -41,9 +40,10 @@ class CardForm extends StatelessWidget {
       return Container(
         padding: EdgeInsets.all(16),
         child: Center(
-          child: Text(
-            "$title: ${size.width}/${size.height}",
-            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+          child: text(
+            "$title ${size.width}/${size.height}",
+            fontSize: 25,
+            bold: true,
           ),
         ),
       );
@@ -58,12 +58,10 @@ class CardForm extends StatelessWidget {
         ),
         height: 76,
         child: Center(
-          child: Text(
-            "$title: ${size.width}/${size.height}",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 22,
-            ),
+          child: text(
+            "$title ${size.width}/${size.height}",
+            color: Colors.white,
+            fontSize: 22,
           ),
         ),
       );

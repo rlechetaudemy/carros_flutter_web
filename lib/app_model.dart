@@ -1,7 +1,6 @@
 import 'package:carros_flutter_web/imports.dart';
 
 class AppModel extends ChangeNotifier {
-  //static Usuario getUsuario(context) => Provider.of<AppModel>(context,listen: false).user;
 
   static AppModel get(context, {bool listen = false}) =>
       Provider.of<AppModel>(context, listen: listen);
@@ -12,7 +11,7 @@ class AppModel extends ChangeNotifier {
 
   void setUser(Usuario u) {
     this._user = u;
-    print("Set User $u");
+    print("AppModel.setUser: $u");
     notifyListeners();
   }
 }
