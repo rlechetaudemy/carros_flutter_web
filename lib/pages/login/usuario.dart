@@ -1,4 +1,5 @@
 import 'dart:convert' as convert;
+
 import 'package:carros_flutter_web/imports.dart';
 
 class Usuario {

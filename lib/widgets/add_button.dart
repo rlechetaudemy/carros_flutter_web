@@ -11,7 +11,10 @@ class AddButton extends StatelessWidget {
     return Material(
       color: Colors.transparent,
       child: IconButton(
-        icon: Icon(Icons.add, color: AppColors.blue,),
+        icon: Icon(
+          Icons.add,
+          color: AppColors.blue,
+        ),
         onPressed: onPressed,
       ),
     );

@@ -72,8 +72,8 @@ class _BreadCrumbState extends State<BreadCrumb> {
           // Actions na direita
           widget.actions != null
               ? Row(
-            children: widget.actions,
-          )
+                  children: widget.actions,
+                )
               : Container()
         ],
       ),

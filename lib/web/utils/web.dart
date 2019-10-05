@@ -1,5 +1,7 @@
 import 'dart:html' as html;
 
+String userAgent() => html.window.navigator.userAgent;
+
 launch(String url) {
   html.window.open(url, "site");
 }

@@ -1,5 +1,7 @@
 import 'package:carros_flutter_web/imports.dart';
+import 'package:carros_flutter_web/pages/carros/carros_page.dart';
 import 'package:carros_flutter_web/pages/login/login_form.dart';
+import 'package:carros_flutter_web/widgets/card_form.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -9,25 +11,29 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   Size get size => MediaQuery.of(context).size;
 
-  bool get mobile => MediaQuery.of(context).size.width <= 500;
-
   AppModel get app => AppModel.get(context);
 
   @override
   void initState() {
     super.initState();
 
+    // Login automático
     _autoLogin();
   }
 
   void _autoLogin() {
+    // Lê do storage
     Usuario.get().then(
-      (Usuario u) {
-        print("User logado auto $u");
-        if (u != null) {
-          AppModel.get(context).setUser(u);
+      (Usuario user) {
+        if (user != null) {
+          // Salva no Provider
+          AppModel.get(context).setUser(user);
 
-          push(context, HomePage(), replace: true);
+          if (user.isAdmin()) {
+            push(context, HomePage(), replace: true);
+          } else {
+            push(context, CarrosPage(), replace: true);
+          }
         }
       },
     );
@@ -35,7 +41,6 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       resizeToAvoidBottomPadding: true,
       body: Stack(
@@ -46,65 +51,12 @@ class _LoginPageState extends State<LoginPage> {
             fit: BoxFit.fill,
             width: double.infinity,
           ),
-          Center(
-            child: Container(
-              width: 457,
-              height: 460,
-              decoration: BoxDecoration(
-                color: AppColors.cinza_background,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Column(
-                children: <Widget>[
-                  _title(),
-                  Container(
-                    padding: EdgeInsets.all(30),
-                    child: _form(),
-                  ),
-                ],
-              ),
-            ),
+          CardForm(
+            title: "Carros",
+            child: LoginForm(),
           )
         ],
       ),
     );
-  }
-
-  _title() {
-    if (mobile) {
-      return Container(
-        padding: EdgeInsets.all(16),
-        child: Center(
-          child: Text(
-            "Carros",
-            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-          ),
-        ),
-      );
-    } else {
-      return Container(
-        decoration: BoxDecoration(
-          color: AppColors.cinza_606060,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(10),
-            topRight: Radius.circular(10),
-          ),
-        ),
-        height: 76,
-        child: Center(
-          child: Text(
-            "Carros",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 22,
-            ),
-          ),
-        ),
-      );
-    }
-  }
-
-  _form() {
-    return LoginForm();
   }
 }

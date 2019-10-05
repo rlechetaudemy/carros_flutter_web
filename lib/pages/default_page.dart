@@ -1,4 +1,3 @@
-
 import 'package:carros_flutter_web/imports.dart';
 
 class DefaultPage extends StatefulWidget {
@@ -21,8 +20,13 @@ class _DefaultPageState extends State<DefaultPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text("Carros",style: TextStyle(fontSize: 32,fontWeight: FontWeight.bold),),
-            SizedBox(height: 20,),
+            Text(
+              "Carros",
+              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 20,
+            ),
             Image.asset(
               "assets/imgs/background.jpg",
               fit: BoxFit.fill,

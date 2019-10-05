@@ -22,8 +22,7 @@ class StackMaterialContainer extends StatelessWidget {
   final Function onTap;
   final StackFit fit;
 
-  StackMaterialContainer(
-      {this.child, this.onTap, this.fit = StackFit.loose});
+  StackMaterialContainer({this.child, this.onTap, this.fit = StackFit.loose});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +34,6 @@ class StackMaterialContainer extends StatelessWidget {
           child: Material(
             color: Colors.transparent,
             child: InkWell(
-              hoverColor: Color(0xccE3F2FD),
               onTap: onTap,
             ),
           ),

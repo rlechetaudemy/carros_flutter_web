@@ -94,7 +94,8 @@ class _HeaderState extends State<Header> {
       Usuario user = AppModel.get(context).user;
       PagesModel.get(context).push(PageInfo("Meus Dados", MeusDadosPage(user)));
     } else if ("alterar_senha" == value) {
-      PagesModel.get(context).push(PageInfo("Alterar Senha", AlterarSenhaPage()));
+      PagesModel.get(context)
+          .push(PageInfo("Alterar Senha", AlterarSenhaPage()));
     } else {}
   }
 }

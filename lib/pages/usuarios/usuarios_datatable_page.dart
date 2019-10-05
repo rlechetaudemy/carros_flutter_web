@@ -171,12 +171,8 @@ class _UsuariosPageState extends State<UsuariosPage>
   }
 
   _onClickUsuario(Usuario u) {
-    if (mobile) {
-      push(context, UsuarioPage(usuario: u));
-    } else {
-      PagesModel.get(context)
-          .push(PageInfo("Usuario ${u.nome}", UsuarioPage(usuario: u)));
-    }
+    final pageInfo = PageInfo("Usuario ${u.nome}", UsuarioPage(usuario: u));
+    PagesModel.get(context).push(pageInfo);
   }
 
   _onClickAdd() {

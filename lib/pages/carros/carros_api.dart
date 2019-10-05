@@ -21,7 +21,7 @@ class CarrosApi {
     final response = await http.get(context, url);
 
     print('Response status: ${response.statusCode}');
-    print('Response body: ${response.body.substring(0,50)}');
+    print('Response body: ${response.body.substring(0, 50)}');
 
     String json = response.body;
 
@@ -65,7 +65,7 @@ class CarrosApi {
     }
   }
 
-  static Future<ApiResponse> delete(context,Carro c) async {
+  static Future<ApiResponse> delete(context, Carro c) async {
     try {
       String url = "$BASE_URL/carros/${c.id}";
 

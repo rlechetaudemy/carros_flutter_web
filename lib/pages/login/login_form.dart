@@ -18,8 +18,6 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
-  bool get mobile => MediaQuery.of(context).size.width <= 500;
-
   AppModel get app => AppModel.get(context);
 
   final _formKey = GlobalKey<FormState>();
@@ -131,23 +129,23 @@ class _LoginFormState extends State<LoginForm> {
           SizedBox(
             height: 20,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                "Ainda não é cadastrado?",
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.grey,
-                  decoration: TextDecoration.underline,
+          InkWell(
+            onTap: _onClickCadastrar,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  "Ainda não é cadastrado?",
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.grey,
+                    decoration: TextDecoration.underline,
+                  ),
                 ),
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              InkWell(
-                onTap: _onClickCadastrar,
-                child: Center(
+                SizedBox(
+                  width: 10,
+                ),
+                Center(
                   child: Text(
                     "Crie uma conta",
                     style: TextStyle(
@@ -157,11 +155,36 @@ class _LoginFormState extends State<LoginForm> {
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           SizedBox(
             height: 20,
+          ),
+          InkWell(
+            onTap: _onClickHelp,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  "Ajuda",
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.grey,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Center(
+                  child: Icon(
+                    Icons.help,
+                    color: AppColors.blue,
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
@@ -182,11 +205,9 @@ class _LoginFormState extends State<LoginForm> {
         await _loginBloc.login(context, login, senha);
 
     if (response.ok) {
-
       Usuario user = response.result;
-      print("> go");
 
-      if(user.isAdmin()) {
+      if (user.isAdmin()) {
         push(context, HomePage(), replace: true);
       } else {
         push(context, CarrosPage(), replace: true);
@@ -201,7 +222,11 @@ class _LoginFormState extends State<LoginForm> {
   }
 
   void _onClickCadastrar() {
-    alert(context, "Cadastrar");
+    alert(context, "Não implementado :-)");
+  }
+
+  void _onClickHelp() {
+    alert(context, "Você pode se logar com o usuário admin/123 ou user/123.");
   }
 
   @override

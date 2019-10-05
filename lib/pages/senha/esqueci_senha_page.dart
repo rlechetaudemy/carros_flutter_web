@@ -1,6 +1,5 @@
-
-
 import 'package:carros_flutter_web/imports.dart';
+import 'package:carros_flutter_web/widgets/card_form.dart';
 
 class EsqueciSenhaPage extends StatefulWidget {
   @override
@@ -8,15 +7,6 @@ class EsqueciSenhaPage extends StatefulWidget {
 }
 
 class _EsqueciSenhaPageState extends State<EsqueciSenhaPage> {
-  Size get size => MediaQuery.of(context).size;
-
-  AppModel get app => AppModel.get(context);
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,36 +23,9 @@ class _EsqueciSenhaPageState extends State<EsqueciSenhaPage> {
           fit: BoxFit.fill,
           width: double.infinity,
         ),
-        Center(
-          child: Container(
-            width: 457,
-            height: 400,
-            decoration: BoxDecoration(
-                color: AppColors.cinza_background,
-                borderRadius: BorderRadius.circular(12)),
-            child: Column(
-              children: <Widget>[
-                Container(
-                  decoration: BoxDecoration(
-                      color: AppColors.cinza_606060,
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(10),
-                          topRight: Radius.circular(10))),
-                  height: 76,
-                  child: Center(
-                    child: Text(
-                      "Esqueci a Senha",
-                      style: TextStyle(color: Colors.white, fontSize: 22),
-                    ),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.all(16),
-                  child: _form(),
-                ),
-              ],
-            ),
-          ),
+        CardForm(
+          title: "Esqueci a Senha",
+          child: _form(),
         )
       ],
     );
@@ -104,9 +67,7 @@ class _EsqueciSenhaPageState extends State<EsqueciSenhaPage> {
   }
 
   _onClickEsqueciSenha() {
-    alert(context,
-        "Não implementado, mas se estivesse um link para recuperar a senha teria sido enviado para o seu email :-)",
-        callback: () {
+    alert(context, "Não implementado :-)", callback: () {
       pop(context);
     });
   }

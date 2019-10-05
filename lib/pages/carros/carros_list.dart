@@ -6,7 +6,6 @@ class CarrosListView extends StatefulWidget {
 }
 
 class _CarrosListViewState extends State<CarrosListView> {
-
   final _bloc = CarrosBloc();
 
   List<Carro> carros;

@@ -17,7 +17,18 @@ class _InfoPageState extends State<InfoPage> {
     return Container(
       padding: EdgeInsets.all(16),
       child: ListView(
-        children: <Widget>[_font()],
+        children: <Widget>[_font(), _userAgent()],
+      ),
+    );
+  }
+
+  _userAgent() {
+    return Card(
+      child: ConstrainedBox(
+        constraints: BoxConstraints(minHeight: 300),
+        child: Center(
+          child: Text("UserAgent: [${userAgent()}]"),
+        ),
       ),
     );
   }
