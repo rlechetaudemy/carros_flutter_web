@@ -1,5 +1,4 @@
 import 'package:carros_flutter_web/imports.dart';
-import 'package:carros_flutter_web/widgets/text.dart';
 
 // Card usado nas telas de login e esqueci a senha com template do formulário
 class CardForm extends StatelessWidget {
@@ -15,7 +14,7 @@ class CardForm extends StatelessWidget {
     return Center(
       child: Container(
         width: small ? double.infinity : 457,
-        height: small ? double.infinity : 460,
+        height: small ? double.infinity : 500,
         decoration: BoxDecoration(
           color: AppColors.cinza_background,
           borderRadius: small ? null : BorderRadius.circular(12),
@@ -49,6 +48,7 @@ class CardForm extends StatelessWidget {
       );
     } else {
       return Container(
+        height: 76,
         decoration: BoxDecoration(
           color: AppColors.cinza_606060,
           borderRadius: BorderRadius.only(
@@ -56,7 +56,6 @@ class CardForm extends StatelessWidget {
             topRight: Radius.circular(10),
           ),
         ),
-        height: 76,
         child: Center(
           child: text(
             "$title ${size.width}/${size.height}",

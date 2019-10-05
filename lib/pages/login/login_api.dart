@@ -1,27 +1,21 @@
 import 'dart:convert';
 
+import 'package:carros_flutter_web/pages/login/login_bloc.dart';
 import 'package:carros_flutter_web/pages/login/usuario.dart';
 import 'package:carros_flutter_web/utils/api_response.dart';
 import 'package:http/http.dart' as http;
 
 class LoginApi {
-  static Future<ApiResponse<Usuario>> login(String login, String senha) async {
+  static Future<ApiResponse<Usuario>> login(LoginInput input) async {
     try {
       var url = 'https://carros-springboot.herokuapp.com/api/v2/login';
-//      var url = 'http://livrowebservices.com.br/rest/login';
 
       Map<String, String> headers = {"Content-Type": "application/json"};
-      Map params = {"username": login, "password": senha};
-//      Map params = {
-//        "login": login,
-//        "senha": senha
-//      };
 
-      String s = json.encode(params);
-      print(url);
-      print(">> $s");
+      String body = input.toJson();
+      print(">> $body");
 
-      var response = await http.post(url, body: s, headers: headers);
+      var response = await http.post(url, body: body, headers: headers);
 
       print('Response status: ${response.statusCode}');
       print('Response body: ${response.body}');
@@ -30,9 +24,6 @@ class LoginApi {
 
       if (response.statusCode == 200) {
         final user = Usuario.fromMap(mapResponse);
-        print(user);
-        print(user.isAdmin());
-        print("#--#");
 
         return ApiResponse.ok(result: user);
       }

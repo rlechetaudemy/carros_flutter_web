@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert' as convert;
 
 import 'package:carros_flutter_web/app_model.dart';
 import 'package:carros_flutter_web/pages/login/login_api.dart';
@@ -6,15 +7,26 @@ import 'package:carros_flutter_web/pages/login/usuario.dart';
 import 'package:carros_flutter_web/utils/api_response.dart';
 import 'package:carros_flutter_web/utils/bloc.dart';
 
+class LoginInput {
+  String login;
+  String senha;
+
+  String toJson() {
+    return convert.json.encode({
+      "username": login,
+      "password": senha,
+    });
+  }
+}
+
 class LoginBloc {
   final checkManterLogado = BooleanBloc();
   final progress = BooleanBloc();
 
-  Future<ApiResponse<Usuario>> login(
-      context, String login, String senha) async {
+  Future<ApiResponse<Usuario>> login(context, LoginInput loginInput) async {
     progress.set(true);
 
-    ApiResponse<Usuario> response = await LoginApi.login(login, senha);
+    ApiResponse<Usuario> response = await LoginApi.login(loginInput);
 
     if (response.ok) {
       Usuario user = response.result;

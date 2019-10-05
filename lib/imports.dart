@@ -40,3 +40,8 @@ export 'package:carros_flutter_web/widgets/material_container.dart';
 export 'package:carros_flutter_web/widgets/text_error.dart';
 export 'package:flutter/material.dart';
 export 'package:provider/provider.dart';
+
+export 'package:carros_flutter_web/widgets/text.dart';
+export 'package:carros_flutter_web/pages/carros/carros_page.dart';
+export 'package:carros_flutter_web/pages/login/login_form.dart';
+export 'package:carros_flutter_web/widgets/card_form.dart';

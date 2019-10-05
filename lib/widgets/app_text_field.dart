@@ -10,6 +10,7 @@ class AppTextField extends StatelessWidget {
   final bool password;
   final TextEditingController controller;
   final FormFieldValidator<String> validator;
+  final ValueChanged<String> onChanged;
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
   final FocusNode focusNode;
@@ -23,6 +24,7 @@ class AppTextField extends StatelessWidget {
     this.password = false,
     this.controller,
     this.validator,
+    this.onChanged,
     this.keyboardType,
     this.textInputAction,
     this.focusNode,
@@ -57,6 +59,7 @@ class AppTextField extends StatelessWidget {
         keyboardType: keyboardType,
         textInputAction: textInputAction,
         focusNode: focusNode,
+        onChanged: onChanged,
         onFieldSubmitted: (String text) {
           if (nextFocus != null) {
             FocusScope.of(context).requestFocus(nextFocus);

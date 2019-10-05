@@ -1,16 +1,6 @@
-import 'package:carros_flutter_web/app_model.dart';
-import 'package:carros_flutter_web/colors.dart';
-import 'package:carros_flutter_web/home.dart';
-import 'package:carros_flutter_web/pages/carros/carros_page.dart';
+import 'package:carros_flutter_web/imports.dart';
 import 'package:carros_flutter_web/pages/login/login_bloc.dart';
-import 'package:carros_flutter_web/pages/login/usuario.dart';
 import 'package:carros_flutter_web/pages/senha/esqueci_senha_page.dart';
-import 'package:carros_flutter_web/utils/alert.dart';
-import 'package:carros_flutter_web/utils/api_response.dart';
-import 'package:carros_flutter_web/utils/nav.dart';
-import 'package:carros_flutter_web/widgets/app_button.dart';
-import 'package:carros_flutter_web/widgets/app_text_field.dart';
-import 'package:flutter/material.dart';
 
 class LoginForm extends StatefulWidget {
   @override
@@ -24,8 +14,10 @@ class _LoginFormState extends State<LoginForm> {
 
   final _loginBloc = LoginBloc();
 
-  final _tLogin = TextEditingController(text: "user");
-  final _tSenha = TextEditingController(text: "123");
+  final _loginInput = LoginInput();
+
+  final _tLogin = TextEditingController();
+  final _tSenha = TextEditingController();
 
   final _focusSenha = FocusNode();
 
@@ -63,6 +55,7 @@ class _LoginFormState extends State<LoginForm> {
             keyboardType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
             nextFocus: _focusSenha,
+            onChanged: (s) => _loginInput.login = s,
           ),
           SizedBox(height: 10),
           AppTextField(
@@ -73,6 +66,7 @@ class _LoginFormState extends State<LoginForm> {
             validator: _validateSenha,
             keyboardType: TextInputType.number,
             focusNode: _focusSenha,
+            onChanged: (s) => _loginInput.senha = s,
           ),
           SizedBox(
             height: 20,
@@ -196,13 +190,10 @@ class _LoginFormState extends State<LoginForm> {
       return;
     }
 
-    String login = _tLogin.text;
-    String senha = _tSenha.text;
-
-    print("Login: $login, Senha: $senha");
+    print("Login: ${_loginInput.login}, Senha: ${_loginInput.senha}");
 
     ApiResponse<Usuario> response =
-        await _loginBloc.login(context, login, senha);
+        await _loginBloc.login(context, _loginInput);
 
     if (response.ok) {
       Usuario user = response.result;
