@@ -2,6 +2,17 @@ import 'dart:convert' as convert;
 
 import 'package:carros_flutter_web/imports.dart';
 
+// global
+void logout(context) {
+  Usuario.clear();
+
+  AppModel.get(context).setUser(null);
+
+  push(context, LoginPage(), replace: true);
+
+  PagesModel.get(context).popAll();
+}
+
 class Usuario {
   int id;
   String login;

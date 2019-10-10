@@ -99,14 +99,3 @@ class _HeaderState extends State<Header> {
     } else {}
   }
 }
-
-// global
-void logout(context) {
-  Usuario.clear();
-
-  AppModel.get(context).setUser(null);
-
-  push(context, LoginPage(), replace: true);
-
-  PagesModel.get(context).popAll();
-}

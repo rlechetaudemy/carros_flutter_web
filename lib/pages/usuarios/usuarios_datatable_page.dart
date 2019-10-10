@@ -65,9 +65,7 @@ class _UsuariosPageState extends State<UsuariosPage>
 
   _dataTable(List<Usuario> usuarios) {
     return Container(
-//      height: double.infinity,
       child: DataTable(
-//        onSelectAll: (b) {},
         sortColumnIndex: 0,
         sortAscending: true,
         columns: _columns(),

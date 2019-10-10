@@ -39,8 +39,6 @@ class LoginBloc {
       app.setUser(user);
     }
 
-//    ApiResponse<Usuario> response = ApiResponse.ok(null);
-
     progress.set(false);
 
     return response;

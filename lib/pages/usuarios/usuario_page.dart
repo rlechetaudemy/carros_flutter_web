@@ -68,7 +68,6 @@ class _UsuarioPageState extends State<UsuarioPage> {
     return Card(
       child: Container(
         padding: EdgeInsets.all(16),
-//        width: 350,
         height: 320,
         child: Center(
           child: ListView(
@@ -194,17 +193,8 @@ class _UsuarioPageState extends State<UsuarioPage> {
 
   void _onClickDelete() {
     // Alerta para confirmar
-    alertConfirm(context, "Deseja mesmo excluir?", confirmCallback: delete);
-  }
-
-  delete() async {
-    ApiResponse response = await UsuariosApi.delete(context, usuario);
-    if (response.ok) {
-      alert(context, response.msg, callback: () {
-        PagesModel.get(context).pop();
-      });
-    } else {
-      alert(context, response.msg);
-    }
+    alertConfirm(context, "Deseja mesmo excluir?", confirmCallback: (){
+      print("não implementado...");
+    });
   }
 }
