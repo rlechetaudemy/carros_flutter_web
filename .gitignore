@@ -29,6 +29,11 @@
 .pub/
 /build/
 
+/backups
+.firebase/
+.firebaserc
+.firebase.json
+
 # Android related
 **/android/**/gradle-wrapper.jar
 **/android/.gradle
