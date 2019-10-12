@@ -1,13 +1,11 @@
 # carros_flutter_web
 
-## Logins:
+## Logins
 
-* Interface administrativa: admin/123
+* Administrador: admin/123
 
-* Interface de usuário: user/123
+* Usuário: user/123
 
-## Firebase
-
-Demo:
+## Demo
 
 https://carros-flutterweb.firebaseapp.com
