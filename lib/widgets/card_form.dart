@@ -33,7 +33,6 @@ class CardForm extends StatelessWidget {
   }
 
   _title(context) {
-    Size size = MediaQuery.of(context).size;
 
     if (smallScreen(context)) {
       return Container(

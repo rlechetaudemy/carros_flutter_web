@@ -86,8 +86,8 @@ class _LoginFormState extends State<LoginForm> {
                     builder: (context, snapshot) {
                       return Checkbox(
                         value: snapshot.data,
-                        onChanged: (b) => {
-                          _loginBloc.checkManterLogado.add(b)
+                        onChanged: (b) {
+                          _loginBloc.checkManterLogado.add(b);
                           _loginInput.checkManterLogado = b;
                         },
                       );
