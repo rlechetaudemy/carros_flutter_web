@@ -1,5 +1,9 @@
 import 'dart:html' as html;
 
+import 'package:flutter/foundation.dart';
+
+bool get isWeb => kIsWeb;
+
 String userAgent() => html.window.navigator.userAgent;
 
 launch(String url) {
