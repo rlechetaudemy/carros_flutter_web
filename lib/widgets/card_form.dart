@@ -40,7 +40,7 @@ class CardForm extends StatelessWidget {
         padding: EdgeInsets.all(16),
         child: Center(
           child: text(
-            "$title ${size.width}/${size.height}",
+            "$title",
             fontSize: 25,
             bold: true,
           ),
@@ -58,7 +58,7 @@ class CardForm extends StatelessWidget {
         ),
         child: Center(
           child: text(
-            "$title ${size.width}/${size.height}",
+            "$title",
             color: Colors.white,
             fontSize: 22,
           ),

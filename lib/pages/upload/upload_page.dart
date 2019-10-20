@@ -47,28 +47,25 @@ class _UploadPageState extends State<UploadPage> {
         Center(
           child: Container(
             color: Colors.grey[100],
-            child: ConstrainedBox(
-              constraints: BoxConstraints.tightFor(height: 250),
-              child: Center(
-                child: url == null || showProgress
-                    ? showProgress
-                        ? CircularProgressIndicator()
-                        : FlutterLogo(
-                            size: 100,
-                          )
-                    : InkWell(
-                        onTap: () {
-                          launch(url);
-                        },
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Image.network(url),
-                            Text(url),
-                          ],
-                        ),
+            child: Center(
+              child: url == null || showProgress
+                  ? showProgress
+                      ? CircularProgressIndicator()
+                      : FlutterLogo(
+                          size: 100,
+                        )
+                  : InkWell(
+                      onTap: () {
+                        launch(url);
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Image.network(url),
+                          Text(url),
+                        ],
                       ),
-              ),
+                    ),
             ),
           ),
         ),

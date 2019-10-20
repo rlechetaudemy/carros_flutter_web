@@ -32,9 +32,6 @@ class MyMaterialApp extends StatelessWidget {
   _theme(context) {
     AppModel app = AppModel.get(context, listen: true);
 
-    print("## trocar tema ##");
-    print("user ${app.user}");
-
     bool admin = app.user == null || app.user.isAdmin();
 
     return admin ? _themeAdmin() : _themeUser();
@@ -46,7 +43,6 @@ class MyMaterialApp extends StatelessWidget {
       primaryColor: Colors.green,
       scaffoldBackgroundColor: Colors.white,
       splashColor: Colors.blue[600],
-//      hoverColor: Color(0xccE3F2FD),
       textTheme: TextTheme(
         body1: TextStyle(
           color: AppColors.blue,
@@ -62,7 +58,6 @@ class MyMaterialApp extends StatelessWidget {
       primaryColor: AppColors.blue,
       scaffoldBackgroundColor: Colors.white,
       splashColor: Colors.blue[600],
-//      hoverColor: Colors.blue[50],
       textTheme: TextTheme(
         body1: TextStyle(
           color: AppColors.blue,

@@ -11,7 +11,6 @@ class AppModel extends ChangeNotifier {
 
   void setUser(Usuario u) {
     this._user = u;
-    print("AppModel.setUser: $u");
     notifyListeners();
   }
 }

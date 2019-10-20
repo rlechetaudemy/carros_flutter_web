@@ -87,7 +87,6 @@ class _HeaderState extends State<Header> {
   }
 
   void _onClickOptionMenu(context, String value) {
-    print("_onClickOptionMenu $value");
     if ("logout" == value) {
       logout(context);
     } else if ("meus_dados" == value) {

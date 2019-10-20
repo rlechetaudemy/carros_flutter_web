@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
       padding: EdgeInsets.all(16),
       width: size.width,
       height: headerHeight,
-      color: Colors.blue,
+      color: AppColors.blue,
       child: Header(),
     );
   }

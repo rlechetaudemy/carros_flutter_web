@@ -302,12 +302,10 @@ class _CarroFormPageState extends State<CarroFormPage> {
     ApiResponse<String> response =
         await UploadApi.upload(file.fileName, file.mimeType, file.base64);
 
-    print("Ok ${response.ok}");
-    print("Ok url ${response.result}");
+    print("Upload ok: ${response.result}");
 
     if (response.ok) {
       String url = response.result;
-      print(url);
       setState(() {
         uploading = false;
         this.urlFoto = url;
