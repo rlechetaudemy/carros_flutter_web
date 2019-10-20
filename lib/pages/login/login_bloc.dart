@@ -10,6 +10,7 @@ import 'package:carros_flutter_web/utils/bloc.dart';
 class LoginInput {
   String login;
   String senha;
+  bool checkManterLogado = false;
 
   String toJson() {
     return convert.json.encode({
@@ -30,7 +31,11 @@ class LoginBloc {
 
     if (response.ok) {
       Usuario user = response.result;
-      user.save();
+
+      if(loginInput.checkManterLogado) {
+        // Somente salva nas prefs se marcou o checkbox
+        user.save();
+      }
 
       print("User API $user");
 
