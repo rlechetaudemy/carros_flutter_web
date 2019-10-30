@@ -125,7 +125,7 @@ class _CarrosListViewState extends State<CarrosListView> {
   _onClickCarro(Carro c) {
     if (AppModel.get(context).user.isAdmin()) {
       PagesModel nav = PagesModel.get(context);
-      nav.push(PageInfo("Carros", CarroFormPage(carro: c)));
+      nav.push(PageInfo(c.nome, CarroFormPage(carro: c)));
     } else {
       push(context, CarroPage(c));
     }
