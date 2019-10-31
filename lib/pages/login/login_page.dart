@@ -28,7 +28,8 @@ class _LoginPageState extends State<LoginPage> {
       if (user.isAdmin()) {
         push(context, HomePage(), replace: true);
       } else {
-        push(context, CarrosPage(), replace: true);
+        Navigator.pushReplacementNamed(context, "/cars");
+        //push(context, CarrosPage(), replace: true);
       }
     }
   }

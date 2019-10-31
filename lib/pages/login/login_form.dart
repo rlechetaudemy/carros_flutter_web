@@ -204,7 +204,8 @@ class _LoginFormState extends State<LoginForm> {
       if (user.isAdmin()) {
         push(context, HomePage(), replace: true);
       } else {
-        push(context, CarrosPage(), replace: true);
+//        push(context, CarrosPage(), replace: true);
+        Navigator.pushReplacementNamed(context, "/cars");
       }
     } else {
       alert(context, response.msg);

@@ -1,4 +1,6 @@
 import 'package:carros_flutter_web/imports.dart';
+import 'package:carros_flutter_web/pages/chart/charts_page.dart';
+import 'package:fluro/fluro.dart';
 
 void main() => runApp(MyApp());
 
@@ -19,13 +21,20 @@ class MyApp extends StatelessWidget {
   }
 }
 
+final router = Router();
+
 class MyMaterialApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: _theme(context),
-      home: LoginPage(),
+      routes: {
+        '/': (context) => LoginPage(),
+        '/chart': (context) => ChartsPage(),
+        '/cars': (context) => CarrosPage(),
+        '/cars/car': (context) => CarroPage(),
+      },
     );
   }
 
