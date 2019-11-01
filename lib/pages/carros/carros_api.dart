@@ -33,6 +33,26 @@ class CarrosApi {
     return carros;
   }
 
+  static Future<Carro> getCarro(context, int id) async {
+    String url = "$BASE_URL/carros/$id";
+
+    print("GET > $url");
+
+    final response = await http.get(context, url);
+
+    print('Response status: ${response.statusCode}');
+    print('Response body: ${response.body.substring(0, 50)}');
+
+    String json = response.body;
+
+    Map map = convert.json.decode(json);
+
+    final c = Carro.fromMap(map);
+    print("Carro: $c");
+
+    return c;
+  }
+
   static Future<ApiResponse> save(context, Carro c) async {
     try {
       String url = "$BASE_URL/carros";

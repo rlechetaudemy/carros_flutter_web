@@ -128,7 +128,7 @@ class _CarrosListViewState extends State<CarrosListView> {
       nav.push(PageInfo(c.nome, CarroFormPage(carro: c)));
     } else {
 //      push(context, CarroPage(carro: c));
-        Navigator.pushNamed(context, "/cars/${c.id}", arguments: c);
+        Navigator.pushNamed(context, "/carros/${c.id}", arguments: c);
     }
   }
 

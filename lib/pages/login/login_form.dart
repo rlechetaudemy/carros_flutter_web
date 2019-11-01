@@ -16,8 +16,8 @@ class _LoginFormState extends State<LoginForm> {
 
   final _loginInput = LoginInput();
 
-  final _tLogin = TextEditingController();
-  final _tSenha = TextEditingController();
+  final _tLogin = TextEditingController(text: "user");
+  final _tSenha = TextEditingController(text: "123");
 
   final _focusSenha = FocusNode();
 
@@ -38,6 +38,14 @@ class _LoginFormState extends State<LoginForm> {
       return "A senha precisa ter pelo menos 3 números";
     }
     return null;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    _loginInput.login = _tLogin.text;
+    _loginInput.senha = _tSenha.text;
   }
 
   @override
@@ -205,7 +213,7 @@ class _LoginFormState extends State<LoginForm> {
         push(context, HomePage(), replace: true);
       } else {
 //        push(context, CarrosPage(), replace: true);
-        Navigator.pushReplacementNamed(context, "/cars");
+        Navigator.pushReplacementNamed(context, "/carros");
       }
     } else {
       alert(context, response.msg);
