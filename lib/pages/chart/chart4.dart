@@ -1,8 +1,8 @@
 //https://google.github.io/charts/flutter/example/combo_charts/ordinal_bar_line
+import 'package:charts_flutter/flutter.dart' as charts;
 /// Example of an ordinal combo chart with two series rendered as bars, and a
 /// third rendered as a line.
 import 'package:flutter/material.dart';
-import 'package:charts_flutter/flutter.dart' as charts;
 
 class OrdinalComboBarLineChart extends StatelessWidget {
   final List<charts.Series> seriesList;

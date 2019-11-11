@@ -1,11 +1,11 @@
 //https://google.github.io/charts/flutter/example/bar_charts/grouped_stacked_weight_pattern
+import 'package:charts_flutter/flutter.dart' as charts;
 /// Example of a bar chart with grouped, stacked series oriented vertically with
 /// a custom weight pattern.
 ///
 /// This is a pattern of weights used to calculate the width of bars within a
 /// bar group. If not specified, each bar in the group will have an equal width.
 import 'package:flutter/material.dart';
-import 'package:charts_flutter/flutter.dart' as charts;
 
 class GroupedStackedWeightPatternBarChart extends StatelessWidget {
   final List<charts.Series> seriesList;

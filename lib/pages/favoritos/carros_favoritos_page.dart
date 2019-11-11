@@ -2,14 +2,12 @@ import 'package:carros_flutter_web/imports.dart';
 
 import 'favoritos_service.dart';
 
-class FavoritosPage extends StatefulWidget {
+class CarrosFavoritosPage extends StatefulWidget {
   @override
-  _FavoritosPageState createState() => _FavoritosPageState();
+  _CarrosFavoritosPageState createState() => _CarrosFavoritosPageState();
 }
 
-class _FavoritosPageState extends State<FavoritosPage> {
-
-  List<Carro> carros;
+class _CarrosFavoritosPageState extends State<CarrosFavoritosPage> {
 
   final _firebaseService = FavoritosService();
 
@@ -21,7 +19,7 @@ class _FavoritosPageState extends State<FavoritosPage> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: _firebaseService.stream,
+      stream: _firebaseService.streamUsers,
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           return TextError("Não foi possível buscar os carros");
