@@ -1,6 +1,42 @@
 import 'package:carros_flutter_web/imports.dart';
+import 'package:firebase/firebase.dart';
+import 'package:firebase/firebase.dart' as fb;
+import 'package:firebase/firestore.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  _initFirebase();
+
+  runApp(MyApp());
+}
+
+_initFirebase() {
+  initializeApp(
+      apiKey: "AIzaSyBzGBV2okQ_as_jLgTh0BYK4YxXg5WDkE0",
+      authDomain: "YourAuthDomain",
+      databaseURL: "https://carros-f177d.firebaseio.com",
+      projectId: "carros-f177d",
+      storageBucket: "gs://carros-f177d.appspot.com");
+
+  CollectionReference ref = fb.firestore().collection("carros");
+  print(ref);
+
+  ref.onSnapshot.listen((querySnapshot) {
+    for (var change in querySnapshot.docChanges()) {
+      var docSnapshot = change.doc;
+      print(change.doc);
+      print(change.type);
+      print(docSnapshot.data());
+    }
+  });
+
+//  Database db = database();
+//  DatabaseReference ref = db.ref("messages");
+//
+//  ref.onValue.listen((e) {
+//    DataSnapshot datasnapshot = e.snapshot;
+//    // Do something with datasnapshot
+//  });
+}
 
 class MyApp extends StatelessWidget {
   @override
