@@ -1,6 +1,7 @@
 import 'package:carros_flutter_web/imports.dart';
 import 'package:firebase/firestore.dart';
 
+import 'carros_favoritos_page.dart';
 import 'favoritos_service.dart';
 
 // Usuarios que favoritaram os carros pelo Firebase
@@ -22,24 +23,36 @@ class _UsuariosFavoritosPageState extends State<UsuariosFavoritosPage> {
   @override
   Widget build(BuildContext context) {
     return BreadCrumb(
-      child: StreamBuilder(
-        stream: _firebaseService.streamUsers2,
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return TextError("Não foi possível buscar os usuários");
-          }
+      child: _stream(),
+      actions: <Widget>[
+        IconButton(
+          icon: Icon(Icons.help, color: AppColors.blue,),
+          onPressed: (){
+            alert(context, "Exemplo do Firebase Firestore com Flutter Web.\n\nEste exemplo mostra os usuários que se logaram com o Google no aplicativo Flutter demonstrado no curso Flutter Essencial.\n\nNo aplicativo, cada usuário pode favoritar os carros, os quais são salvos no Firestore.\n\nAo clicar em um usuário será mostrado a lista de carros que ele favoritou.");
+          },
+        )
+      ],
+    );
+  }
 
-          if (!snapshot.hasData) {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          }
+  _stream() {
+    return StreamBuilder(
+      stream: _firebaseService.streamUsers,
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          return TextError("Não foi possível buscar os usuários");
+        }
 
-          List<DocumentSnapshot> docs = snapshot.data;
+        if (!snapshot.hasData) {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
 
-          return _grid(docs);
-        },
-      ),
+        List<DocumentSnapshot> docs = snapshot.data;
+
+        return _grid(docs);
+      },
     );
   }
 
@@ -135,11 +148,11 @@ class _UsuariosFavoritosPageState extends State<UsuariosFavoritosPage> {
     );
   }
 
-  _onClickUsuario(Usuario u, String docId) {
+  _onClickUsuario(Usuario u, String userDocId) {
     print("user $u");
-    print("doc id: $docId");
-//    PagesModel nav = PagesModel.get(context);
-//    nav.push(PageInfo(c.nome, CarrosFavoritosPage()));
+    print("doc id: $userDocId");
+    PagesModel nav = PagesModel.get(context);
+    nav.push(PageInfo("${u.login}", CarrosFavoritosPage(userDocId)));
   }
 
 }
