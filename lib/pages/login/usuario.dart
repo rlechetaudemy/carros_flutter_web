@@ -85,6 +85,6 @@ class Usuario {
 
   @override
   String toString() {
-    return 'Usuario{login: $login, nome: $nome, token: ${token.substring(0, 10)}';
+    return 'Usuario{login: $login, nome: $nome, token: $token}';
   }
 }

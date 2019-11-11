@@ -1,5 +1,5 @@
 import 'package:carros_flutter_web/imports.dart';
-import 'package:carros_flutter_web/pages/favoritos/carros_favoritos_page.dart';
+import 'package:firebase/firestore.dart';
 
 import 'favoritos_service.dart';
 
@@ -21,23 +21,25 @@ class _UsuariosFavoritosPageState extends State<UsuariosFavoritosPage> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder(
-      stream: _firebaseService.streamUsers,
-      builder: (context, snapshot) {
-        if (snapshot.hasError) {
-          return TextError("Não foi possível buscar os usuários");
-        }
+    return BreadCrumb(
+      child: StreamBuilder(
+        stream: _firebaseService.streamUsers2,
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return TextError("Não foi possível buscar os usuários");
+          }
 
-        if (!snapshot.hasData) {
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-        }
+          if (!snapshot.hasData) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
 
-        List<Usuario> users = snapshot.data;
+          List<DocumentSnapshot> docs = snapshot.data;
 
-        return _grid(users);
-      },
+          return _grid(docs);
+        },
+      ),
     );
   }
 
@@ -49,7 +51,7 @@ class _UsuariosFavoritosPageState extends State<UsuariosFavoritosPage> {
     return columns;
   }
 
-  _grid(List<Usuario> users) {
+  _grid(List<DocumentSnapshot> docs) {
     return LayoutBuilder(
       builder: (context, constraints) {
         int columns = _columns(constraints);
@@ -63,13 +65,17 @@ class _UsuariosFavoritosPageState extends State<UsuariosFavoritosPage> {
               mainAxisSpacing: 20,
               crossAxisSpacing: 20,
             ),
-            itemCount: users.length,
+            itemCount: docs.length,
             itemBuilder: (context, index) {
-              Usuario c = users[index];
+
+              // Firestore
+              DocumentSnapshot doc = docs[index];
+
+              Usuario user = Usuario.fromMap(doc.data());
 
               return StackMaterialContainer(
-                child: _cardUsuario(c),
-                onTap: () => _onClickUsuario(c),
+                child: _cardUsuario(user),
+                onTap: () => _onClickUsuario(user, doc.id),
               );
             },
           ),
@@ -129,9 +135,11 @@ class _UsuariosFavoritosPageState extends State<UsuariosFavoritosPage> {
     );
   }
 
-  _onClickUsuario(Usuario c) {
-    PagesModel nav = PagesModel.get(context);
-    nav.push(PageInfo(c.nome, CarrosFavoritosPage()));
+  _onClickUsuario(Usuario u, String docId) {
+    print("user $u");
+    print("doc id: $docId");
+//    PagesModel nav = PagesModel.get(context);
+//    nav.push(PageInfo(c.nome, CarrosFavoritosPage()));
   }
 
 }
