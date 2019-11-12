@@ -84,6 +84,8 @@ class _UsuariosFavoritosPageState extends State<UsuariosFavoritosPage> {
               // Firestore
               DocumentSnapshot doc = docs[index];
 
+              // Converte o documento para usuário :-)
+              // No app Flutter os dados do usuário são salvos ao fazer login.
               Usuario user = Usuario.fromMap(doc.data());
 
               return StackMaterialContainer(

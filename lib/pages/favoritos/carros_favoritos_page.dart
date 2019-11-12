@@ -79,6 +79,8 @@ class _CarrosFavoritosPageState extends State<CarrosFavoritosPage> {
               // Firestore
               DocumentSnapshot doc = docs[index];
 
+              // Converte o carro para usuário :-)
+              // O carro é favoritado e salvo no Firestore no app Flutter
               Carro c = Carro.fromMap(doc.data());
 
               return StackMaterialContainer(
