@@ -35,21 +35,17 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     return Scaffold(
-      resizeToAvoidBottomPadding: true,
-      body: Stack(
-        fit: StackFit.expand,
-        children: <Widget>[
-          Image.asset(
-            "assets/imgs/background.jpg",
-            fit: BoxFit.fill,
-            width: double.infinity,
-          ),
-          CardForm(
-            title: "Carros",
-            child: LoginForm(),
-          )
-        ],
+      body: Container(
+        color: Color.fromARGB(255,92,107,128),
+        width: size.width,
+        height: size.height,
+        child: CardForm(
+          title: "Carros",
+          child: LoginForm(),
+        ),
       ),
     );
   }

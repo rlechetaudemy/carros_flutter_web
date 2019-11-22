@@ -4,6 +4,7 @@ firebase init hosting
 firebase deploy
 
 firebase deploy --only functions
+firebase serve --only functions
 
 flutter build web
 

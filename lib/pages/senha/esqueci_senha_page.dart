@@ -9,8 +9,18 @@ class EsqueciSenhaPage extends StatefulWidget {
 class _EsqueciSenhaPageState extends State<EsqueciSenhaPage> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     return Scaffold(
-      body: _layout2(),
+      body: Container(
+        color: Color.fromARGB(255,92,107,128),
+        width: size.width,
+        height: size.height,
+        child: CardForm(
+          title: "Esqueci a Senha",
+          child: _form(),
+        ),
+      ),
     );
   }
 

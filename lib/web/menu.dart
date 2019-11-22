@@ -35,7 +35,7 @@ class _MenuState extends State<Menu> {
 
     menus.add(ItemMenu("Home", FontAwesomeIcons.home, DefaultPage()));
     menus.add(ItemMenu("Carros", FontAwesomeIcons.car, CarrosPage()));
-    menus.add(ItemMenu("Favoritos", FontAwesomeIcons.heart, UsuariosFavoritosPage()));
+//    menus.add(ItemMenu("Favoritos", FontAwesomeIcons.heart, UsuariosFavoritosPage()));
     menus.add(ItemMenu("Usuários", FontAwesomeIcons.user, UsuariosPage()));
     menus.add(ItemMenu("Upload", FontAwesomeIcons.upload, UploadPage()));
     menus.add(ItemMenu("Storage", FontAwesomeIcons.database, CountPage()));
