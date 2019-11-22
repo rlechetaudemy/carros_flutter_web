@@ -9,9 +9,9 @@ void main() {
 
 _initFirebase() {
   initializeApp(
-      apiKey: "AIzaSyBzGBV2okQ_as_jLgTh0BYK4YxXg5WDkE0",
-      projectId: "carros-f177d",
-      databaseURL: "https://carros-f177d.firebaseio.com",);
+      apiKey: "AIzaSyD6eDBQ9PGsehPfwbaCK8NnrwIWa1Al6t0",
+      projectId: "carros-flutterweb",
+      databaseURL: "https://carros-flutterweb.firebaseio.com",);
 }
 
 class MyApp extends StatelessWidget {
