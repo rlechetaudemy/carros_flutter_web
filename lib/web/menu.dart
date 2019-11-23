@@ -6,6 +6,7 @@ import 'package:carros_flutter_web/pages/count_page.dart';
 import 'package:carros_flutter_web/pages/default_page.dart';
 import 'package:carros_flutter_web/pages/favoritos/usuarios_favoritos_page.dart';
 import 'package:carros_flutter_web/pages/info_page.dart';
+import 'package:carros_flutter_web/pages/push/push_page.dart';
 import 'package:carros_flutter_web/pages/upload/upload_page.dart';
 import 'package:carros_flutter_web/pages/usuarios/usuarios_datatable_page.dart';
 import 'package:flutter/material.dart';
@@ -35,11 +36,12 @@ class _MenuState extends State<Menu> {
 
     menus.add(ItemMenu("Home", FontAwesomeIcons.home, DefaultPage()));
     menus.add(ItemMenu("Carros", FontAwesomeIcons.car, CarrosPage()));
-//    menus.add(ItemMenu("Favoritos", FontAwesomeIcons.heart, UsuariosFavoritosPage()));
+    menus.add(ItemMenu("Favoritos", FontAwesomeIcons.heart, UsuariosFavoritosPage()));
     menus.add(ItemMenu("Usuários", FontAwesomeIcons.user, UsuariosPage()));
     menus.add(ItemMenu("Upload", FontAwesomeIcons.upload, UploadPage()));
     menus.add(ItemMenu("Storage", FontAwesomeIcons.database, CountPage()));
     menus.add(ItemMenu("Charts", FontAwesomeIcons.chartArea, ChartsPage()));
+    menus.add(ItemMenu("Push", FontAwesomeIcons.bell, PushPage()));
     menus.add(ItemMenu("Info", FontAwesomeIcons.info, InfoPage()));
   }
 
