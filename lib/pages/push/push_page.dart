@@ -1,5 +1,7 @@
+import 'package:carros_flutter_web/imports.dart';
 import 'package:carros_flutter_web/pages/push/push_input.dart';
 import 'package:carros_flutter_web/utils/alert.dart';
+import 'package:carros_flutter_web/web/breadcrumb.dart';
 import 'package:flutter/material.dart';
 
 class PushPage extends StatefulWidget {
@@ -17,11 +19,17 @@ class _PushPageState extends State<PushPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Send Push"),
-      ),
-      body: _body(),
+      body: BreadCrumb(child: _body()),
     );
+  }
+
+  // Add validate email function.
+  String _validateRequired(String value, String msg) {
+    if (value.isEmpty) {
+      return msg;
+    }
+
+    return null;
   }
 
   _body() {
@@ -31,30 +39,42 @@ class _PushPageState extends State<PushPage> {
         padding: EdgeInsets.all(16),
         child: ListView(
           children: <Widget>[
-            Text(
-              "Exemplo de enviar Push Notification usando o Firebase Messaging (FCM)",
-            ),
-            TextFormField(
-              decoration: InputDecoration(
-                labelText: "Titulo",
+            Container(
+              padding: EdgeInsets.all(16),
+              child: Text(
+                "Exemplo de enviar Push Notification usando o Firebase Messaging (FCM)",
               ),
+            ),
+            SizedBox(height: 26),
+            AppTextField(
+              label:
+                  "Server Key (Console do Firebase > Project Settings > Cloud Messaging > Server Key)",
+              onChanged: (String s) => _input.key = s,
+              validator: (String s) =>
+                  _validateRequired(s, "Informe a chave do Firebase"),
+            ),
+            AppTextField(
+              label: "Titulo",
               onChanged: (String s) => _input.title = s,
+              validator: (String s) => _validateRequired(s, "Informe o título"),
             ),
-            TextFormField(
-              decoration: InputDecoration(
-                labelText: "Mensagem / body",
-              ),
+            AppTextField(
+              label: "Mensagem / body",
               onChanged: (String s) => _input.msg = s,
+              validator: (String s) =>
+                  _validateRequired(s, "Informe a mensagem"),
             ),
-            TextFormField(
-              decoration: InputDecoration(
-                labelText: "Firebase Token",
-              ),
+            AppTextField(
+              label: "Firebase Token (token do celular)",
               onChanged: (String s) => _input.token = s,
+              validator: (String s) =>
+                  _validateRequired(s, "Informe a mensagem"),
             ),
-            RaisedButton(
-              child: Text("Send Push"),
-              onPressed: _onClickPush,
+            Center(
+              child: AppButton(
+                "Enviar Push",
+                onPressed: _onClickPush,
+              ),
             )
           ],
         ),
@@ -67,7 +87,7 @@ class _PushPageState extends State<PushPage> {
       return;
     }
 
-    print("Login: ${_input.title}, senha: ${_input.msg}");
+    print("> $_input");
 
     final response = await PushApi.push(_input);
 

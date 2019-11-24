@@ -4,9 +4,16 @@ import 'package:carros_flutter_web/imports.dart';
 import 'package:http/http.dart' as http;
 
 class PushInput {
+  // Firebase key
+  String key;
   String title;
   String msg;
   String token;
+
+  @override
+  String toString() {
+    return 'PushInput{key: $key, title: $title, msg: $msg, token: $token}';
+  }
 }
 
 class PushApi {
@@ -29,13 +36,14 @@ class PushApi {
     final headers = {
       "Content-Type": "application/json",
       "Authorization":
-          "Key=AAAAiAAixGc:APA91bFzHC7FPtfea7jBHu2OynyHjh3pVLI_SnCu-yESeqrT5YNtp9Y1HTChpgb9ELI1lT3cG3U50GtoTFC5jkzB-gBoWM_jaQpbolC98936Lkl1GrGtFbjRCeOIt_FctEEBb5d_YdsF"
+          "Key=${input.key}"
     };
 
-    print("> Login POST: $url");
-    print("> Params: $params");
+    print("> Push POST: $url");
 
     String json = convert.json.encode(params);
+
+    print("> $params");
 
     final response = await http.post(
       url,
@@ -43,7 +51,7 @@ class PushApi {
       headers: headers,
     );
 
-    print("> ${response.body}");
+    print("< ${response.body}");
 
     if (response.statusCode == 200) {
       return ApiResponse.ok(msg: "Push enviado com sucesso.");

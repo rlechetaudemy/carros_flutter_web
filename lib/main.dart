@@ -1,5 +1,5 @@
 import 'package:carros_flutter_web/imports.dart';
-import 'package:firebase/firebase.dart';
+import 'package:firebase/firebase.dart' as fb;
 
 void main() {
   _initFirebase();
@@ -8,7 +8,7 @@ void main() {
 }
 
 _initFirebase() {
-  initializeApp(
+  fb.initializeApp(
     apiKey: "AIzaSyD6eDBQ9PGsehPfwbaCK8NnrwIWa1Al6t0",
     projectId: "carros-flutterweb",
     databaseURL: "https://carros-flutterweb.firebaseio.com",);
