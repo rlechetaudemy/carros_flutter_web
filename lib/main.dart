@@ -20,10 +20,10 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          builder: (context) => AppModel(),
+          create: (context) => AppModel(),
         ),
         ChangeNotifierProvider(
-          builder: (context) => PagesModel(),
+          create: (context) => PagesModel(),
         )
       ],
       child: MyMaterialApp(),
