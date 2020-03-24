@@ -14,7 +14,11 @@ Future push(BuildContext context, Widget page, {bool replace = false}) {
 }
 
 bool pop<T extends Object>(BuildContext context, [T result]) {
-  return Navigator.pop(context);
+  if(Navigator.canPop(context)) {
+    Navigator.pop(context);
+    return true;
+  }
+  return false;
 }
 
 class FadeRoute<T> extends MaterialPageRoute<T> {
@@ -24,9 +28,9 @@ class FadeRoute<T> extends MaterialPageRoute<T> {
   @override
   Widget buildTransitions(BuildContext context, Animation<double> animation,
       Animation<double> secondaryAnimation, Widget child) {
-    if (settings.isInitialRoute) {
-      return child;
-    }
+//    if (settings.isInitialRoute) {
+//      return child;
+//    }
     return FadeTransition(opacity: animation, child: child);
   }
 }

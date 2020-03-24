@@ -108,7 +108,7 @@ class _CarrosListViewState extends State<CarrosListView> {
                 ),
                 Center(
                   child: text(
-                    "${c.nome}",
+                    c.nome ?? "",
                     fontSize: fontSize(font),
                     maxLines: 1,
                     ellipsis: true,
