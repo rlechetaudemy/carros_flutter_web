@@ -38,15 +38,57 @@ class _LoginPageState extends State<LoginPage> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      body: Container(
-        color: Color.fromARGB(255,92,107,128),
-        width: size.width,
-        height: size.height,
-        child: CardForm(
-          title: "Carros",
-          child: LoginForm(),
-        ),
-      ),
+      resizeToAvoidBottomPadding: true,
+      body: _layoutBackgroundImg(),
     );
+  }
+
+  _layoutBackgroundImg() {
+
+    return Stack(
+      fit: StackFit.expand,
+      children: <Widget>[
+        Image.asset(
+          "assets/imgs/background.jpg",
+          fit: BoxFit.fill,
+          width: double.infinity,
+        ),
+        Center(
+          child: Container(
+            width: 460,
+            height: 500,
+            decoration: BoxDecoration(
+                color: AppColors.cinza_background,
+                borderRadius: BorderRadius.circular(12)),
+            child: Column(
+              children: <Widget>[
+                Container(
+                  decoration: BoxDecoration(
+                      color: AppColors.cinza_606060,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(10),
+                          topRight: Radius.circular(10))),
+                  height: 76,
+                  child: Center(
+                    child: Text(
+                      "Carros",
+                      style: TextStyle(color: Colors.white,fontSize: 22),
+                    ),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.all(16),
+                  child: _form(),
+                ),
+              ],
+            ),
+          ),
+        )
+      ],
+    );
+  }
+
+  _form() {
+    return  LoginForm();
   }
 }

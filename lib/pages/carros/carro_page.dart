@@ -10,7 +10,7 @@ class CarroPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
-        title: Text(carro.nome),
+        title: Text(carro.nome ?? ""),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.place),
